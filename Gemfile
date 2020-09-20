@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.7'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
+gem 'devise'
 gem 'kaminari'
 gem 'holiday_japan'
 gem 'rails-i18n', '~> 6.0'
