@@ -240,6 +240,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
+  devise
   devise-bootstrap-views (~> 1.0)
   devise-i18n
   holiday_japan
