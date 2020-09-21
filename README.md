@@ -1,24 +1,40 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 飲食店向け 食材使用量計算アプリ
 
-Things you may want to cover:
 
-* Ruby version
+### アプリケーションの概要：Overview
+  - 内容説明
+    - 飲食店の管理項目の一つ、原価を安定させるために開発しました。
+    - その日の出数を入力すれば食材をどれだけ使ったかを計算してくれますので発注をより正確に行うことができます。
+    - また、人を選ばないので経験の浅いスタッフでも発注業務を行いやすくなります。
 
-* System dependencies
+  - 開発環境
+    - Ruby/Ruby on Rails/postgresql/Github/Visual Studio Code
+  
+  - バージョン
+    - ruby '2.6.5'
+    - rails '~> 6.0.3', '>= 6.0.3.3'
+    - DB postgresql
 
-* Configuration
 
-* Database creation
 
-* Database initialization
+### アプリケーションの機能
 
-* How to run the test suite
+-   新規登録・ログインをする時に会社名が必要
+-   業態（ブランド）を登録でき、一覧から業態を選択できる
+-   店舗を登録でき、一覧から店舗を選択できる
+-   料理を登録できる。食材一覧から選択し、分量も登録する。
+-   食材は追加で登録できる
+-   何が何皿出たかを入力することで食材毎にその日の使用量が計算される
+-   ユーザーが登録でき、職位も選べる。
+  
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+### 環境：Requirement
 
-* ...
+### 
+### 
+### 
+### 
+### 
