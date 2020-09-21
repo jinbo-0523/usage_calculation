@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_21_103553) do
+ActiveRecord::Schema.define(version: 2020_09_21_104212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "amount_useds", force: :cascade do |t|
+    t.date "date", null: false
+    t.integer "sale", null: false
+    t.bigint "recipe_id", null: false
+    t.bigint "order_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "store_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_amount_useds_on_order_id"
+    t.index ["recipe_id"], name: "index_amount_useds_on_recipe_id"
+    t.index ["store_id"], name: "index_amount_useds_on_store_id"
+    t.index ["user_id"], name: "index_amount_useds_on_user_id"
+  end
 
   create_table "brands", force: :cascade do |t|
     t.string "name", null: false
@@ -103,6 +118,10 @@ ActiveRecord::Schema.define(version: 2020_09_21_103553) do
     t.index ["rank_id"], name: "index_users_on_rank_id"
   end
 
+  add_foreign_key "amount_useds", "orders"
+  add_foreign_key "amount_useds", "recipes"
+  add_foreign_key "amount_useds", "stores"
+  add_foreign_key "amount_useds", "users"
   add_foreign_key "brands", "campanies"
   add_foreign_key "food_recipes", "foods"
   add_foreign_key "food_recipes", "recipes"
