@@ -1,5 +1,4 @@
 class CampaniesController < ApplicationController
-  before_action :authenticate_campany!
   
   def index
   end
