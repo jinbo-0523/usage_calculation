@@ -1,6 +1,6 @@
 class AmountUsed < ApplicationRecord
   has_many :order
-  belongs_to :user
-  belongs_to :store
+  has_many :users
+  belongs_to :store, optional: true
   validates :date, :sale, presence: true
 end
