@@ -1,7 +1,7 @@
 class Shop < ApplicationRecord
   belongs_to :brand
-  has_many :amount_userd, dependent: :destroy
+  has_many :amounts, dependent: :destroy
   
-              # ↑複数形じゃなくて平気？
-  validates :name, :number, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: true
+  validates :number, presence: true, uniqueness: true, numericality: { only_integer: true, greater_than: 0 }
 end

@@ -1,7 +1,7 @@
 class User < ApplicationRecord
-  has_many :ranks , dependent: :destroy
-  belongs_to :amount_userd
-                # ↑あってる？
+  belongs_to :rank
+  has_many :amounts
   validates :name, presence: true
-  validates :enployee_number, presence: true, uniqueness: true
+  validates :employee_id, uniqueness: true, if: -> { employee_id.present? }
+  validates :display, inclusion: { in: [true, false] }
 end

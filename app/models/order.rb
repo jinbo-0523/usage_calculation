@@ -1,6 +1,5 @@
 class Order < ApplicationRecord
-  belongs_to :amount_userd, optional: true
-                            # ↑あってる？
+  has_many :amounts, optional: true
   has_many :recipes
-  validates: presence: true
+  validates :order,  presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 end
