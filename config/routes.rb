@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  root to: 'campanies#index'
-  devise_for :campanies
-  resources :campanies
+  root to: 'companies#index'
+  devise_for :companies
+  resources :companies
   
 end
