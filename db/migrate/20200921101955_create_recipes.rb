@@ -3,12 +3,10 @@ class CreateRecipes < ActiveRecord::Migration[6.0]
     create_table :recipes do |t|
       t.string :name, null:false
       t.references :brand, null: false, foreign_key: true
-      t.integer :amount, null:false
       t.boolean :display, null: false, default: true
 
       t.timestamps
     end
-    add_index :recipes, :name, unique: true
-
+    add_index :recipes, [:brand_id, :name], unique: true
   end
 end

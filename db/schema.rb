@@ -15,28 +15,13 @@ ActiveRecord::Schema.define(version: 2020_09_22_025730) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "amounts", force: :cascade do |t|
-    t.date "date", null: false
-    t.integer "sale", null: false
-    t.bigint "order_id", null: false
-    t.bigint "user_id", null: false
-    t.bigint "shop_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["order_id"], name: "index_amounts_on_order_id"
-    t.index ["shop_id", "date"], name: "index_amounts_on_shop_id_and_date", unique: true
-    t.index ["shop_id"], name: "index_amounts_on_shop_id"
-    t.index ["user_id"], name: "index_amounts_on_user_id"
-  end
-
   create_table "brands", force: :cascade do |t|
     t.string "name", null: false
     t.bigint "company_id"
     t.boolean "display", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["company_id"], name: "index_brands_on_company_id"
-    t.index ["name"], name: "index_brands_on_name", unique: true
+    t.index ["company_id", "name"], name: "index_brands_on_company_id_and_name", unique: true
   end
 
   create_table "companies", force: :cascade do |t|
@@ -56,6 +41,7 @@ ActiveRecord::Schema.define(version: 2020_09_22_025730) do
   create_table "food_recipes", force: :cascade do |t|
     t.bigint "food_id", null: false
     t.bigint "recipe_id", null: false
+    t.integer "amount", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["food_id"], name: "index_food_recipes_on_food_id"
@@ -67,17 +53,22 @@ ActiveRecord::Schema.define(version: 2020_09_22_025730) do
     t.integer "total", null: false
     t.string "unit", null: false
     t.boolean "display", default: true, null: false
+    t.bigint "company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["name"], name: "index_foods_on_name", unique: true
+    t.index ["company_id", "name"], name: "index_foods_on_company_id_and_name", unique: true
+    t.index ["company_id"], name: "index_foods_on_company_id"
   end
 
   create_table "orders", force: :cascade do |t|
     t.integer "order", default: 0, null: false
     t.bigint "recipe_id", null: false
+    t.bigint "report_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipe_id", "order"], name: "index_orders_on_recipe_id_and_order", unique: true
     t.index ["recipe_id"], name: "index_orders_on_recipe_id"
+    t.index ["report_id"], name: "index_orders_on_report_id"
   end
 
   create_table "ranks", force: :cascade do |t|
@@ -86,19 +77,29 @@ ActiveRecord::Schema.define(version: 2020_09_22_025730) do
     t.bigint "company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["company_id"], name: "index_ranks_on_company_id"
-    t.index ["name"], name: "index_ranks_on_name", unique: true
+    t.index ["company_id", "name"], name: "index_ranks_on_company_id_and_name", unique: true
   end
 
   create_table "recipes", force: :cascade do |t|
     t.string "name", null: false
     t.bigint "brand_id", null: false
-    t.integer "amount", null: false
     t.boolean "display", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["brand_id", "name"], name: "index_recipes_on_brand_id_and_name", unique: true
     t.index ["brand_id"], name: "index_recipes_on_brand_id"
-    t.index ["name"], name: "index_recipes_on_name", unique: true
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.date "date", null: false
+    t.integer "sale", null: false
+    t.bigint "user_id", null: false
+    t.bigint "shop_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["shop_id", "date"], name: "index_reports_on_shop_id_and_date", unique: true
+    t.index ["shop_id"], name: "index_reports_on_shop_id"
+    t.index ["user_id"], name: "index_reports_on_user_id"
   end
 
   create_table "shops", force: :cascade do |t|
@@ -108,9 +109,9 @@ ActiveRecord::Schema.define(version: 2020_09_22_025730) do
     t.boolean "display", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["brand_id", "name"], name: "index_shops_on_brand_id_and_name", unique: true
+    t.index ["brand_id", "number"], name: "index_shops_on_brand_id_and_number", unique: true
     t.index ["brand_id"], name: "index_shops_on_brand_id"
-    t.index ["name"], name: "index_shops_on_name", unique: true
-    t.index ["number"], name: "index_shops_on_number", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -124,15 +125,16 @@ ActiveRecord::Schema.define(version: 2020_09_22_025730) do
     t.index ["rank_id"], name: "index_users_on_rank_id"
   end
 
-  add_foreign_key "amounts", "orders"
-  add_foreign_key "amounts", "shops"
-  add_foreign_key "amounts", "users"
   add_foreign_key "brands", "companies"
   add_foreign_key "food_recipes", "foods"
   add_foreign_key "food_recipes", "recipes"
+  add_foreign_key "foods", "companies"
   add_foreign_key "orders", "recipes"
+  add_foreign_key "orders", "reports"
   add_foreign_key "ranks", "companies"
   add_foreign_key "recipes", "brands"
+  add_foreign_key "reports", "shops"
+  add_foreign_key "reports", "users"
   add_foreign_key "shops", "brands"
   add_foreign_key "users", "ranks"
 end

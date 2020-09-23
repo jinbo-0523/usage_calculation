@@ -3,10 +3,10 @@ class CreateRanks < ActiveRecord::Migration[6.0]
     create_table :ranks do |t|
       t.string :name, null: false
       t.boolean :display, null: false, default: true
-      t.references :company, null: false, foreign_key: true
+      t.references :company, null: false, foreign_key: true, index: false
       
       t.timestamps
     end
-    add_index :ranks, :name, unique: true
+    add_index :ranks, [:company_id ,:name], unique: true
   end
 end
