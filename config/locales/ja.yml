@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    attributes:
+      rank:
+        name: 職位名
+        display: 表示/非表示
+    models:
+      company: 会社
+      rank: 職位
