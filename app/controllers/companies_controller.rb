@@ -1,6 +1,7 @@
 class CompaniesController < ApplicationController
   
   def index
+    @company = current_company
   end
 
   def new
