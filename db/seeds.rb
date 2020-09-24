@@ -2,13 +2,7 @@ FoodRecipe.destroy_all
 Recipe.destroy_all
 Company.destroy_all
 
-# 【たけさんからの指摘】display:true はデフォでtrueが入るので書く必要はない
-# 【たけさんからの指摘】コードの記述は rankA = companyA.ranks.create!(id: 1, name: "なし") のように書いて実際作っていくので
-# 【たけさんからの指摘】rankB = Rank.create!(id: 2,name: "一般", company_id:1)のような書き方は間違い。, company_id:1がいらない
-# 課題①  rankでcompany.idが違うはずなのにnameが一緒だとバリデートがかかる
-# 課題②  brandでcompany.idが違うはずなのにnameが一緒だとバリデートがかかる
 
-# idとemployeeでバリデートかかる
 companyA = Company.create!(id: 1, email: "aaa@aaa", name:"株式会社AAA",password: "aaa@aaa")
 companyB = Company.create!(id: 2, email: "bbb@bbb", name:"株式会社BBB",password: "bbb@bbb")
 companyC = Company.create!(id: 3, email: "ccc@ccc", name:"株式会社CCC",password: "ccc@ccc")
