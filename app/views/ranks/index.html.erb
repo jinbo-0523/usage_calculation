@@ -1,4 +1,5 @@
-<%= render "rank_header" %>
+<%= link_to "職位一覧", ranks_path %>
+<%= link_to "職位作成", new_rank_path %>
 <h1 class="text-center">職位一覧</h1>
 <table class="table table-bordered table-striped mt-4">
   <thead class="table-primary">
@@ -20,12 +21,7 @@
         <% else %>
           <i class="far fa-eye-slash"></i>表示しない
         <% end %>
-
         </td>
-
-
-
-
         <td class="text-nowrap">
           <%= link_to  edit_rank_path(rank), class: "btn btn-success" do %>
             <i class="far fa-edit"></i><span class="d-none d-md-inline"> 編集</span>

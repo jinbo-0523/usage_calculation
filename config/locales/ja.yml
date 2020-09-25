@@ -4,6 +4,11 @@ ja:
       rank:
         name: 職位名
         display: 表示/非表示
+      user:
+        name: ユーザー名
+        employee_id: 従業員ID
+        display: 表示/非表示
     models:
       company: 会社
       rank: 職位
+      user: ユーザー

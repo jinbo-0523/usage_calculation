@@ -11,7 +11,7 @@ class RanksController < ApplicationController
   def create
     @rank = current_company.ranks.new(rank_params)
     if @rank.save
-      redirect_to ranks_path,noteci:"新しく職位を作成しました"
+      redirect_to ranks_path, notice: "新しく職位を作成しました"
     else
       flash.now[:alert] = "作成に失敗しました"
       render :new
@@ -45,6 +45,5 @@ class RanksController < ApplicationController
   private
   def rank_params
     params.require(:rank).permit(:name, :display)
-    
   end
 end
