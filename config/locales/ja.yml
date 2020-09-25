@@ -8,7 +8,12 @@ ja:
         name: ユーザー名
         employee_id: 従業員ID
         display: 表示/非表示
+        rank_id: 職位
+      brand:
+        name: 業態名
+        display: 表示/非表示
     models:
       company: 会社
       rank: 職位
       user: ユーザー
+      brand: 業態(ブランド)
