@@ -18,8 +18,8 @@
     <% @shops.each do |shop| %>
       <tr>
         <th scope="row" class="text-right"><%= shop.id %></th>
-        <td class="break-word"><%= shop.employee_id %></td>
-        <td class="break-word"><%= shop.rank.name %></td>
+        <td class="break-word"><%= shop.number %></td>
+        <td class="break-word"><%= shop.brand.name %></td>
         <td class="break-word"><%= shop.name %></td>
         <td class="break-word">
         <% if shop.display == true %>
