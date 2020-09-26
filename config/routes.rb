@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   resources :companies
   resources :ranks
   resources :users
-  
+  resources :brands
 end

@@ -1,0 +1,22 @@
+<div class="form_area">
+  <%=  form_with model: @brand, local: true do |form|%>
+    <div class="form-group">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "form-control"%>
+    </div>
+    <% if action_name == 'new' %>
+      <div class="form-group">
+        <% form.label :display %>
+        <% form.text_field :display, class: "form-control"%>
+      </div>
+    <% else %>
+      <div class="custom-control custom-switch">
+        <%= form.check_box :display, {class: "custom-control-input"}, checked_value = "true", unchecked_value = "false" %>
+        <%= form.label :display, class: "custom-control-label" %>
+      </div>
+    <% end %>
+    <div class="form-group">
+      <%= form.submit button_value, class: "btn btn-success btn-block" %>
+    </div>
+  <% end %>
+</div>
