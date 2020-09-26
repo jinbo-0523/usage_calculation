@@ -6,18 +6,18 @@ class ShopsController < ApplicationController
 
   def new
     @shop = current_company.shops.new
-    @ranks = current_company.ranks.order(id: :asc)
+    @brands = current_company.brands.order(id: :asc)
   end
 
   def create
-    # 他の会社の rank_id になっている場合は例外を出す
-    current_company.ranks.find(params[:shop][:rank_id])
+    # 他の会社の brand_id になっている場合は例外を出す
+    current_company.brands.find(params[:shop][:brand_id])
     @shop = User.new(shop_params)
     if @shop.save
       redirect_to shops_path, notice: "新しくユーザーを作成しました"
     else
       flash.now[:alert] = "作成に失敗しました"
-      @ranks = current_company.ranks.order(id: :asc)
+      @brands = current_company.brands.order(id: :asc)
       render :new
     end
   end
@@ -26,7 +26,7 @@ class ShopsController < ApplicationController
   end
 
   def edit
-    @ranks = current_company.ranks.order(id: :asc)
+    @brands = current_company.brands.order(id: :asc)
 
   end
 
@@ -35,7 +35,7 @@ class ShopsController < ApplicationController
       redirect_to shops_path, notice:"職位を編集しました"
     else
       flash.now[:alert] = "編集に失敗しました"
-      @ranks = current_company.ranks.order(id: :asc)
+      @brands = current_company.brands.order(id: :asc)
       render :edit
     end
   end
@@ -51,7 +51,7 @@ class ShopsController < ApplicationController
 
   private
   def shop_params
-    params.require(:shop).permit(:employee_id, :rank_id, :name, :display)
+    params.require(:shop).permit(:employee_id, :brand_id, :name, :display)
   end
 end
 
