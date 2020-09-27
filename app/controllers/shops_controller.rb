@@ -33,7 +33,7 @@ class ShopsController < ApplicationController
   
   def update
     if @shop.update(shop_params)
-      redirect_to edit_shop_path, notice:"店舗を編集しました"
+      redirect_to new_shop_path, notice:"店舗を編集しました"
     else
       flash.now[:alert] = "編集に失敗しました"
       @brands = current_company.brands.order(id: :asc)
