@@ -1,0 +1,40 @@
+<div class= "index_area">
+  <h1 class="text-center">店舗一覧</h1>
+  <table class="table table-bordered table-striped mt-4">
+    <thead class="table-primary">
+      <tr>
+        <th scope="col">No.</th>
+        <th scope="col" class="w-20">店舗ID</th>
+        <th scope="col" class="w-20">業態</th></th>
+        <th scope="col" class="w-20">店名</th>
+        <th scope="col" class="w-20">表示/非表示</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @shops.each do |shop| %>
+        <tr>
+          <th scope="row" class="text-right"><%= shop.id %></th>
+          <td class="break-word"><%= shop.number %></td>
+          <td class="break-word"><%= shop.brand.name %></td>
+          <td class="break-word"><%= shop.name %></td>
+          <td class="break-word">
+          <% if shop.display == true %>
+            <i class="fas fa-eye"></i>表示する
+          <% else %>
+            <i class="far fa-eye-slash"></i>表示しない
+          <% end %>
+          </td>
+          <td class="text-nowrap">
+            <%= link_to  edit_shop_path(shop), class: "btn btn-success" do %>
+              <i class="far fa-edit"></i><span class="d-none d-md-inline"> 編集</span>
+            <% end %>
+            <%= link_to shop_path(shop),method: :delete , data: { confirm: "削除しますか?" }, class: "btn btn-danger" do %>
+              <i class="fas fa-trash-alt"></i><span class="d-none d-md-inline"> 削除</span>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
