@@ -1,8 +1,10 @@
 class FoodsController < ApplicationController
   def index
+    @foods = current_company.foods.order(id: :asc)
   end
 
   def new
+
   end
 
   def create

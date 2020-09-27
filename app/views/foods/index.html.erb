@@ -1,2 +1,41 @@
-<h1>Foods#index</h1>
-<p>Find me in app/views/foods/index.html.erb</p>
+<%= link_to "食材一覧", foods_path%>
+<%= link_to "食材作成",  new_food_path%>
+<h1 class="text-center">食材一覧</h1>
+
+<table class="table table-bordered table-striped mt-4">
+  <thead>
+    <tr>
+      <th scope="col">No.</th>
+      <th scope="col" class="w-20">食材名</th>
+      <th scope="col" class="w-20">総量</th>
+      <th scope="col" class="w-20">単位</th>
+      <th scope="col" class="w-20">表示非表示</th>
+      <th scope="col" class="w-20"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @foods.each do |food| %>
+      <tr>
+        <th scope="row" class="text-right"><%= food.id %></th>
+        <td class="break-word"><%= food.name %></td>
+        <td class="break-word"><%= food.total %></td>
+        <td class="break-word"><%= food.unit %></td>
+        <td class="break-word">
+          <% if food.display == true %>
+            <i class="fas fa-eye"></i>表示する
+          <% else  %>
+            <i class="fas fa-eye-slash"></i>表示しない
+          <% end %>
+        </td>
+        <td class=text-nowrap>
+          <%= link_to edit_food_path(food), class:"btn btn-success" do %>
+            <i class="far fa-edit"></i><span class="d-none d-md-inline">編集</span>
+          <% end %>
+          <%= link_to foods_path(food),method: :delete, data: { confirm:"削除しますか？"}, class:"btn btn-danger" do %>
+            <i class="far fa-trash-alt"></i><span class="d-none d-md-inline">削除</span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
