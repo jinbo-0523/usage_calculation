@@ -1,9 +1,6 @@
 class ShopsController < ApplicationController
   before_action :get_shops, only: %i[new create edit update destroy]
   before_action :set_shop, only: %i[edit update destroy]
-
-  def index
-  end
   
   def new
     @shop = current_company.shops.new
@@ -21,9 +18,6 @@ class ShopsController < ApplicationController
       @brands = current_company.brands.order(id: :asc)
       render :new
     end
-  end
-  
-  def show
   end
   
   def edit
