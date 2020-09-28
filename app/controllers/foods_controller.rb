@@ -1,6 +1,8 @@
 class FoodsController < ApplicationController
+  before_action :get_foods, only: %i[new create edit update destroy]
+  before_action :set_food, only: %i[edit update destroy]
+
   def index
-    @foods = current_company.foods.order(id: :asc)
   end
 
   def new
@@ -10,21 +12,19 @@ class FoodsController < ApplicationController
   def create
     @food = current_company.foods.new(food_params)
     if @food.save
-      redirect_to foods_path, notice: "食材を作成しました"
+      redirect_to new_food_path, notice: "食材を作成しました"
     else
       flash.now[:alert] = "作成に失敗しました"
-      render new
+      render :new
     end
   end
 
   def edit
-    @food = current_company.foods.find(params[:id])
   end
   
   def update
-    @food = current_company.foods.find(params[:id])
     if @food.update(food_params)
-      redirect_to foods_path, notice:"食材を編集しました"
+      redirect_to new_food_path, notice:"食材を編集しました"
     else
       flash.now[:alert] = "編集に失敗しました"
       render :edit
@@ -32,12 +32,20 @@ class FoodsController < ApplicationController
   end
   
   def destroy
-    @food = current_company.foods.find(params[:id])
     @food.destroy!
-    redirect_to foods_path, alert: "削除しました"
+    redirect_to new_food_path, alert: "削除しました"
   end
 
   private
+
+  def set_food
+    @food = current_company.foods.find(params[:id])
+  end
+  
+  def get_foods
+    @foods = current_company.foods.order(id: :asc)
+  end
+
   def food_params
     params.require(:food).permit(:id, :name, :total, :unit ,:display)
   end
