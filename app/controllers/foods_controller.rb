@@ -1,10 +1,7 @@
 class FoodsController < ApplicationController
   before_action :get_foods, only: %i[new create edit update destroy]
   before_action :set_food, only: %i[edit update destroy]
-
-  def index
-  end
-
+  
   def new
     @food = current_company.foods.new
   end
@@ -18,7 +15,7 @@ class FoodsController < ApplicationController
       render :new
     end
   end
-
+  
   def edit
   end
   
@@ -35,9 +32,9 @@ class FoodsController < ApplicationController
     @food.destroy!
     redirect_to new_food_path, alert: "削除しました"
   end
-
+  
   private
-
+  
   def set_food
     @food = current_company.foods.find(params[:id])
   end
@@ -45,7 +42,7 @@ class FoodsController < ApplicationController
   def get_foods
     @foods = current_company.foods.order(id: :asc)
   end
-
+  
   def food_params
     params.require(:food).permit(:id, :name, :total, :unit ,:display)
   end
