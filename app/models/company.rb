@@ -4,6 +4,7 @@ class Company < ApplicationRecord
   has_many :foods, dependent: :destroy
   has_many :users, through: :ranks
   has_many :shops, through: :brands
+  has_many :recipes, through: :brands
   
   # Include default devise modules. Others_ available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
