@@ -16,8 +16,10 @@
       <% form.check_box :display, class: "form-control" %>
       <% form.label :display, class: "custom-control-label"%>
     <% else %>
-      <%= form.check_box :display, {class: "custom-control-input"}, checked_value = "true", unchecked_value = "false" %>
-      <%= form.label :display, class: "custom-control-label"%>
+      <div class="custom-control custom-switch">
+        <%= form.check_box :display, {class: "custom-control-input"}, checked_value = "true", unchecked_value = "false" %>
+        <%= form.label :display, class: "custom-control-label"%>
+      </div>
     <% end %>
     <div class="form-group">
       <%= form.submit button_value, class: "btn btn-success btn-block" %>

@@ -38,11 +38,12 @@ class RanksController < ApplicationController
     redirect_to ranks_path, alert: "削除しました"
   end
 
+  private
+
   def set_rank
     @rank = current_company.ranks.find(params[:id])
   end
 
-  private
   def rank_params
     params.require(:rank).permit(:name, :display)
   end

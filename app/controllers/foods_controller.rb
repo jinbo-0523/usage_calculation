@@ -18,13 +18,25 @@ class FoodsController < ApplicationController
   end
 
   def edit
+    @food = current_company.foods.find(params[:id])
   end
-
+  
   def update
+    @food = current_company.foods.find(params[:id])
+    if @food.update(food_params)
+      redirect_to foods_path, notice:"食材を編集しました"
+    else
+      flash.now[:alert] = "編集に失敗しました"
+      render :edit
+    end
+  end
+  
+  def destroy
+    @food = current_company.foods.find(params[:id])
+    @food.destroy!
+    redirect_to foods_path, alert: "削除しました"
   end
 
-  def destroy
-  end
   private
   def food_params
     params.require(:food).permit(:id, :name, :total, :unit ,:display)
