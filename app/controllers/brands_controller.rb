@@ -1,6 +1,6 @@
 class BrandsController < ApplicationController
   before_action :set_brand, only: %i[edit update destroy]
-  before_action :get_all, only: %i[new create edit update destroy]
+  before_action :get_brands, only: %i[new create edit update destroy]
 
   def index
   end
@@ -39,14 +39,16 @@ class BrandsController < ApplicationController
     redirect_to new_brand_path, alert: "削除しました"
   end
   
+  private
+
   def set_brand
     @brand = current_company.brands.find(params[:id])
   end
   
-  def get_all
+  def get_brands
     @brands = current_company.brands.order(id: :asc)
   end
-  private
+
   def brand_params
     params.require(:brand).permit(:name, :display)
   end

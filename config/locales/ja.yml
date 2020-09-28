@@ -17,9 +17,15 @@ ja:
         brand_id: ブランド名
         name: 店舗名
         display: 表示/非表示
+      food:
+        name: 名前
+        total: 総量
+        unit: 単位
+        display: 表示/非表示
     models:
       company: 会社
       rank: 職位
       user: ユーザー
       brand: 業態(ブランド)
       shop: 店舗
+      food: 食材

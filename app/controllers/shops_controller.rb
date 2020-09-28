@@ -1,5 +1,5 @@
 class ShopsController < ApplicationController
-  before_action :get_all, only: %i[new create edit update destroy]
+  before_action :get_shops, only: %i[new create edit update destroy]
   before_action :set_shop, only: %i[edit update destroy]
 
   def index
@@ -46,14 +46,16 @@ class ShopsController < ApplicationController
     redirect_to new_shop_path, alert: "削除しました"
   end
   
+  private
+
   def set_shop
     @shop = current_company.shops.find(params[:id])
   end
   
-  def get_all
+  def get_shops
     @shops = current_company.shops.order(id: :asc)
   end
-  private
+
   def shop_params
     params.require(:shop).permit(:number, :brand_id, :name, :display)
   end

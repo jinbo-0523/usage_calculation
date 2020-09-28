@@ -45,11 +45,12 @@ class UsersController < ApplicationController
     redirect_to users_path, alert: "削除しました"
   end
 
+  private
+
   def set_user
     @user = current_company.users.find(params[:id])
   end
 
-  private
   def user_params
     params.require(:user).permit(:employee_id, :rank_id, :name, :display)
   end
