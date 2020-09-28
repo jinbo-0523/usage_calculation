@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :brands, except: [:inde, :show]
   resources :shops, except: [:inde, :show]
   resources :foods, except: [:inde, :show]
+  resources :recipes
 end
