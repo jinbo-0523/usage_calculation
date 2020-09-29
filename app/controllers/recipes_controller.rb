@@ -5,10 +5,13 @@ class RecipesController < ApplicationController
   def new
     @recipe = current_company.recipes.new
     @brands = current_company.brands.order(id: :asc)
+    @foods = current_company.foods.order(id: :asc)
   end
   
   def create
+    @foods = current_company.foods.order(id: :asc)
     current_company.brands.find(params[:recipe][:brand_id])
+    current_company.foods.find(params[:recipe][:brand_id])
     @recipe =Recipe.new(recipe_params)
     if @user.save
       redirect_to new_user_path, notice: "新しくレシピを作成しました"
