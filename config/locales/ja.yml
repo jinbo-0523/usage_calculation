@@ -22,6 +22,11 @@ ja:
         total: 総量
         unit: 単位
         display: 表示/非表示
+      recipe:
+        name: 料理名
+        brand: 業態名
+        food: 食材
+        display: 表示/非表示
     models:
       company: 会社
       rank: 職位
@@ -29,3 +34,4 @@ ja:
       brand: 業態(ブランド)
       shop: 店舗
       food: 食材
+      recipe: 料理
