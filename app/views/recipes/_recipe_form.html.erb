@@ -12,117 +12,95 @@
 
   <div class="form-row">
     <div class="form-group col">
-      <%= form.label :food %>
       <%= form.collection_select(:food, @foods.all, :id, :name, {include_blank: "選択してください"} , class: "form-control")%>
     </div>
     <div class="form-group col">
-      <%= form.label :amount %>
-      <%= form.text_field :amount, class: "form-control"%>
+      <%= form.text_field :amount, placeholder: "分量を入力", class: "form-control"%>
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col">
-      <%= form.label :food %>
       <%= form.collection_select(:food, @foods.all, :id, :name, {include_blank: "選択してください"} , class: "form-control")%>
     </div>
     <div class="form-group col">
-      <%= form.label :amount %>
-      <%= form.text_field :amount, class: "form-control"%>
+      <%= form.text_field :amount, placeholder: "分量を入力", class: "form-control"%>
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col">
-      <%= form.label :food %>
       <%= form.collection_select(:food, @foods.all, :id, :name, {include_blank: "選択してください"} , class: "form-control")%>
     </div>
     <div class="form-group col">
-      <%= form.label :amount %>
-      <%= form.text_field :amount, class: "form-control"%>
+      <%= form.text_field :amount, placeholder: "分量を入力", class: "form-control"%>
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col">
-      <%= form.label :food %>
       <%= form.collection_select(:food, @foods.all, :id, :name, {include_blank: "選択してください"} , class: "form-control")%>
     </div>
     <div class="form-group col">
-      <%= form.label :amount %>
-      <%= form.text_field :amount, class: "form-control"%>
+      <%= form.text_field :amount, placeholder: "分量を入力", class: "form-control"%>
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col">
-      <%= form.label :food %>
       <%= form.collection_select(:food, @foods.all, :id, :name, {include_blank: "選択してください"} , class: "form-control")%>
     </div>
     <div class="form-group col">
-      <%= form.label :amount %>
-      <%= form.text_field :amount, class: "form-control"%>
+      <%= form.text_field :amount, placeholder: "分量を入力", class: "form-control"%>
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col">
-      <%= form.label :food %>
       <%= form.collection_select(:food, @foods.all, :id, :name, {include_blank: "選択してください"} , class: "form-control")%>
     </div>
     <div class="form-group col">
-      <%= form.label :amount %>
-      <%= form.text_field :amount, class: "form-control"%>
+      <%= form.text_field :amount, placeholder: "分量を入力", class: "form-control"%>
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col">
-      <%= form.label :food %>
       <%= form.collection_select(:food, @foods.all, :id, :name, {include_blank: "選択してください"} , class: "form-control")%>
     </div>
     <div class="form-group col">
-      <%= form.label :amount %>
-      <%= form.text_field :amount, class: "form-control"%>
+      <%= form.text_field :amount, placeholder: "分量を入力", class: "form-control"%>
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col">
-      <%= form.label :food %>
       <%= form.collection_select(:food, @foods.all, :id, :name, {include_blank: "選択してください"} , class: "form-control")%>
     </div>
     <div class="form-group col">
-      <%= form.label :amount %>
-      <%= form.text_field :amount, class: "form-control"%>
+      <%= form.text_field :amount, placeholder: "分量を入力", class: "form-control"%>
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col">
-      <%= form.label :food %>
       <%= form.collection_select(:food, @foods.all, :id, :name, {include_blank: "選択してください"} , class: "form-control")%>
     </div>
     <div class="form-group col">
-      <%= form.label :amount %>
-      <%= form.text_field :amount, class: "form-control"%>
+      <%= form.text_field :amount, placeholder: "分量を入力", class: "form-control"%>
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col">
-      <%= form.label :food %>
       <%= form.collection_select(:food, @foods.all, :id, :name, {include_blank: "選択してください"} , class: "form-control")%>
     </div>
     <div class="form-group col">
-      <%= form.label :amount %>
-      <%= form.text_field :amount, class: "form-control"%>
+      <%= form.text_field :amount, placeholder: "分量を入力", class: "form-control"%>
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col">
-      <%= form.label :food %>
       <%= form.collection_select(:food, @foods.all, :id, :name, {include_blank: "選択してください"} , class: "form-control")%>
     </div>
     <div class="form-group col">
-      <%= form.label :amount %>
-      <%= form.text_field :amount, class: "form-control"%>
+      <%= form.text_field :amount, placeholder: "分量を入力", class: "form-control"%>
     </div>
   </div>
-
+  
   <%= link_to "食材追加", new_food_path %>
-
+  
   <% if action_name == 'new' %>
     <div class="form-group">
       <% form.label :display %>

@@ -12,7 +12,7 @@ class BrandsController < ApplicationController
   def create
     @brand = current_company.brands.new(brand_params)
     if @brand.save
-      redirect_to new_brand_path, notice: "新しく職位を作成しました"
+      redirect_to new_brand_path, notice: "新しく業態を作成しました"
     else
       flash.now[:alert] = "作成に失敗しました"
       render :new
@@ -27,7 +27,7 @@ class BrandsController < ApplicationController
   
   def update
     if @brand.update(brand_params)
-      redirect_to new_brand_path, notice:"職位を編集しました"
+      redirect_to new_brand_path, notice:"業態を編集しました"
     else
       flash.now[:alert] = "編集に失敗しました"
       render :edit
