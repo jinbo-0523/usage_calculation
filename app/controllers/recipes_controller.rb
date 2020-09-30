@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: %i[edit udate destroy]
-  before_action :get_recipes, only: %i[new create edit udate destroy]
+  before_action :set_recipe, only: %i[edit update destroy]
+  before_action :get_recipes, only: %i[new create edit update destroy]
   
 
   def index
@@ -34,10 +34,12 @@ class RecipesController < ApplicationController
   end
   
   def edit
-    @recipes = current_company.brands.order(id: :asc)
+    @brands = current_company.brands.order(id: :asc)
+    @foods = current_company.foods.order(id: :asc)
   end
   
   def update
+    binding.pry
     if @recipe.update(recipe_params)
       redirect_to new_recipe_path, notice:"レシピを編集しました"
     else
