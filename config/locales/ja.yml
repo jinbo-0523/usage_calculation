@@ -28,6 +28,9 @@ ja:
         food_id: 食材
         amount: 分量
         display: 表示/非表示
+      food_recipe:
+        food_id: 食材
+        amount: 分量
     models:
       company: 会社
       rank: 職位
@@ -36,3 +39,4 @@ ja:
       shop: 店舗
       food: 食材
       recipe: 料理
+      food_recipe: 食材ー料理
