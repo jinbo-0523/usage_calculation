@@ -24,8 +24,8 @@ ja:
         display: 表示/非表示
       recipe:
         name: 料理名
-        brand: 業態名
-        food: 食材
+        brand_id: 業態名
+        food_id: 食材
         amount: 分量
         display: 表示/非表示
     models:
