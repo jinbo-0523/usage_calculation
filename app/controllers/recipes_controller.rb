@@ -12,8 +12,6 @@ class RecipesController < ApplicationController
     @foods = current_company.foods.order(id: :asc)
     @recipe = current_company.recipes.new
     @recipe.food_recipes.build
-    @recipe.food_recipes.build
-    @recipe.food_recipes.build
   end
   
   def create

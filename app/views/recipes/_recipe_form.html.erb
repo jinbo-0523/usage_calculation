@@ -1,37 +1,33 @@
 <%=  form_with model: @recipe, local: true do |form|%>
 
-  <div class="form-group">
+  <div class="field form-group">
     <%= form.label :name %>
     <%= form.text_field :name, class: "form-control"%>
   </div>
 
-  <div class="form-group">
+  <div class="field form-group">
     <%= form.label :brand_id %>
     <%= form.select :brand_id, @brands.pluck(:name, :id),{} , class: "form-control"%>
   </div>
 
-  <%= form.fields_for :food_recipes do |fform| %>
-    <div class="form-row">
-      <div class="form-group col">
-        <%= fform.label :food_id %>
-        <%= fform.collection_select(:food_id, @foods.all, :id, :name, {include_blank: "選択してください"} , class: "form-control")%>
-      </div>
-      <div class="form-group col">
-        <%= fform.label :amount %>
-        <%= fform.text_field :amount, placeholder: "分量を入力", class: "form-control"%>
-      </div>
+  <div id="food_recipes">
+    <%= form.fields_for :food_recipes do |f| %>
+      <%= render 'food_recipe_fields', f: f %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association '食材追加', form ,:food_recipes %>
     </div>
-  <% end %>
-  
+  </div>
+
   <%= link_to "食材作成", new_food_path %>
   
   <% if action_name == 'new' %>
-    <div class="form-group">
+    <div class="field form-group">
       <% form.label :display %>
       <% form.text_field :display, class: "form-control"%>
     </div>
   <% else %>
-    <div class="custom-control custom-switch">
+    <div class="field custom-control custom-switch">
       <%= form.check_box :display, {class: "custom-control-input"}, checked_value = "true", unchecked_value = "false" %>
       <%= form.label :display, class: "custom-control-label" %>
     </div>

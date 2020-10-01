@@ -1,0 +1,13 @@
+<div class="nested-fields">
+  <div class="form-row">
+    <div class="field form-group col">
+      <% f.label :food_id %>
+      <%= f.collection_select(:food_id, @foods.all, :id, :name, {include_blank: "食材を選択"} , class: "form-control")%>
+    </div>
+    <div class="field form-group col">
+      <% f.label :amount %>
+      <%= f.text_field :amount, placeholder: "分量を入力", class: "form-control"%>
+    </div>
+  </div>
+  <%= link_to_remove_association "食材削除", f %>
+</div>
