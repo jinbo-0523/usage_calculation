@@ -8,6 +8,7 @@ class RecipesController < ApplicationController
     
   end
   def new
+    
     @brands = current_company.brands.order(id: :asc)
     @foods = current_company.foods.order(id: :asc)
     @recipe = current_company.recipes.new
