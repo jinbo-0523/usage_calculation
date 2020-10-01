@@ -4,12 +4,14 @@ class RecipesController < ApplicationController
   
 
   def index
-    redirect_to new_recipe_path
+    
     
   end
   def new
-    
+    # indexで@recipesが必要
     @brands = current_company.brands.order(id: :asc)
+    @q = current_company.recipes.ransack(params[:q])
+    @search_recipe = @q.result
     @foods = current_company.foods.order(id: :asc)
     @recipe = current_company.recipes.new
     @recipe.food_recipes.build
@@ -35,10 +37,11 @@ class RecipesController < ApplicationController
   def edit
     @brands = current_company.brands.order(id: :asc)
     @foods = current_company.foods.order(id: :asc)
+    @q = current_company.recipes.ransack(params[:q])
+    @search_recipe = @q.result
   end
   
   def update
-    binding.pry
     if @recipe.update(recipe_params)
       redirect_to new_recipe_path, notice:"レシピを編集しました"
     else
