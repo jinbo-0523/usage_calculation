@@ -2,7 +2,7 @@
   <div class="form-row">
     <div class="field form-group col">
       <% f.label :food_id %>
-      <%= f.collection_select(:food_id, @foods.all, :id, :name, {include_blank: "食材を選択"} , class: "form-control")%>
+      <%= f.collection_select(:food_id, @foods.all, :id, :name, {include_blank: "食材を選択"} , class: "js-food_field form-control")%>
     </div>
     <div class="field form-group col">
       <% f.label :amount %>
