@@ -2,7 +2,7 @@
   <div class="form-row">
     <div class="field form-group col">
       <% f.label :food_id %>
-      <%= f.select(:food_id, @foods.pluck(:name, :id), {}, include_blank: "食材を入力" , class: "flexselect form-control") %>
+      <%= f.select(:food_id, @foods.pluck(:name, :id), {include_blank: "食材を入力"}, class: "flexselect form-control") %>
     </div>
     <div class="field form-group col">
       <% f.label :amount %>
@@ -11,10 +11,3 @@
   </div>
   <%= link_to_remove_association "食材削除", f %>
 </div>
-
-
-  <%#= f.select(メソッド名, 要素(配列 or ハッシュ) [, オプション or HTML属性 or イベント属性]) %>
-  <%#= f.select :user_id, [['太郎', 1], ['二郎', 2]], { include_blank: true, selected: 1 }, { id: "user_id", class: "user_class" } %>
-  <%#= f.select :sex, {'男性': 1, '女性': 2}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
-  <%#= f.select :company, Company.all.map{|t| [t.name, t.id]}, include_blank: true %>
-  <%#= f.select :person_id,Person.all.collect { |p| [ p.name, p.id ] }, {include_blank: true}, {class: 'form-control'} %>
