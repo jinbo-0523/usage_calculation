@@ -1,4 +1,4 @@
-class Foods: :SearchesController < ApplicationController
-  index
-    
+class Foods::SearchesController < ApplicationController
+  def index
+  end
 end

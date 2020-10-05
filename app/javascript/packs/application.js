@@ -18,23 +18,22 @@ require("channels")
 require("bootstrap/dist/js/bootstrap")
 require("@fortawesome/fontawesome-free/js/all")
 require("@nathanvda/cocoon")
+require("./flexselect")
 
 document.addEventListener("turbolinks:load", () => {
-  $(function () {
-    $('.js-food_field').on('keyup', function() {
-      var food = $.trim($(this).val())
-      console.log(food)
-    });
+  $("select.flexselect").flexselect();
+  // $(function () {
+  //   $('.js-food_field').on('keyup', function() {
+  //     var food = $.trim($(this).val())
+  //     console.log(food);
+  //   });
 
-    $.ajax({
-      type: 'GET', // リクエストのタイプ
-      url: '/recipes/searches', // リクエストを送信するURL
-      data:  { food: food }, // サーバーに送信するデータ。{キー: バリュー }としてパラメーターで送られる。今回のバリューはvar foodの事
-      dataType: 'json' // サーバーから返却される型
-    });
-
-
-
+  //   $.ajax({
+  //     type: 'GET',
+  //     url: '/recipes/searches', // リクエストを送信するURL
+  //     data:  { food: food }, // サーバーに送信するデータ。{キー: バリュー }としてパラメーターで送られる。今回のバリューはvar foodの事
+  //     dataType: 'json' // サーバーから返却される型
+  //   });
+  // });
+  
 });
-// 基本形
-// $(function ( ) {  });
