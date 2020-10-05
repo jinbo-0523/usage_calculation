@@ -22,18 +22,9 @@ require("./flexselect")
 
 document.addEventListener("turbolinks:load", () => {
   $("select.flexselect").flexselect();
-  // $(function () {
-  //   $('.js-food_field').on('keyup', function() {
-  //     var food = $.trim($(this).val())
-  //     console.log(food);
-  //   });
 
-  //   $.ajax({
-  //     type: 'GET',
-  //     url: '/recipes/searches', // リクエストを送信するURL
-  //     data:  { food: food }, // サーバーに送信するデータ。{キー: バリュー }としてパラメーターで送られる。今回のバリューはvar foodの事
-  //     dataType: 'json' // サーバーから返却される型
-  //   });
-  // });
+  $('#food_recipes').on('cocoon:after-insert', function(e, insertedItem, originalEvent) {
+    $("select.flexselect").flexselect();
+  });
   
 });
