@@ -9,7 +9,7 @@ class RecipesController < ApplicationController
 
   def new
     # indexで@recipesが必要
-    @brands = current_company.brands.order(id: :asc)
+    @brands = current_company.brands.where(display: true).order(id: :asc)
     @q = current_company.recipes.ransack(params[:q])
     @search_recipe = @q.result
     
@@ -30,7 +30,7 @@ class RecipesController < ApplicationController
       redirect_to new_recipe_path, notice: "新しくレシピを作成しました"
     else
       flash.now[:alert] = "作成に失敗しました"
-      @brands = current_company.brands.order(id: :asc)
+      @brands = current_company.brands.where(display: true).order(id: :asc)
       @q = current_company.recipes.ransack(params[:q])
       @search_recipe = @q.result  
       @foods = current_company.foods.order(id: :asc)
@@ -39,7 +39,7 @@ class RecipesController < ApplicationController
   end
   
   def edit
-    @brands = current_company.brands.order(id: :asc)
+    @brands = current_company.brands.where(display: true).order(id: :asc)
     @foods = current_company.foods.order(id: :asc)
     @q = current_company.recipes.ransack(params[:q])
     @search_recipe = @q.result
@@ -50,7 +50,7 @@ class RecipesController < ApplicationController
       redirect_to new_recipe_path, notice:"レシピを編集しました"
     else
       flash.now[:alert] = "編集に失敗しました"
-      @brands = current_company.brands.order(id: :asc)
+      @brands = current_company.brands.where(display: true).order(id: :asc)
       render :edit
     end
   end

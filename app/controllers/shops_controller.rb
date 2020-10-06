@@ -3,7 +3,7 @@ class ShopsController < ApplicationController
   before_action :set_shop,  only: %i[edit update destroy]
   
   def new
-    @brands = current_company.brands.order(id: :asc)
+    @brands = current_company.brands.where(display: true).order(id: :asc)
     @q = current_company.shops.ransack(params[:q])
     @search_shop = @q.result
     @shop = current_company.shops.new
@@ -19,7 +19,7 @@ class ShopsController < ApplicationController
       flash.now[:alert] = "作成に失敗しました"
       @q = current_company.shops.ransack(params[:q])
       @search_shop = @q.result
-      @brands = current_company.brands.order(id: :asc)
+      @brands = current_company.brands.where(display: true).order(id: :asc)
       render :new
     end
   end
@@ -28,7 +28,7 @@ class ShopsController < ApplicationController
   end
   
   def edit
-    @brands = current_company.brands.order(id: :asc)
+    @brands = current_company.brands.where(display: true).order(id: :asc)
     @q = current_company.shops.ransack(params[:q])
     @search_shop = @q.result
     
@@ -39,7 +39,7 @@ class ShopsController < ApplicationController
       redirect_to new_shop_path, notice:"店舗を編集しました"
     else
       flash.now[:alert] = "編集に失敗しました"
-      @brands = current_company.brands.order(id: :asc)
+      @brands = current_company.brands.where(display: true).order(id: :asc)
       render :edit
     end
   end
