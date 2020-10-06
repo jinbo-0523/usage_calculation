@@ -28,7 +28,7 @@
     </thead>
     <tbody>
       <% @search_shop.each do |shop| %>
-        <%# if shop.display == true %>
+        <% if shop.display == true %>
           <tr>
             <th scope="row" class="text-right"><%= shop.id %></th>
             <td class="break-word"><%= shop.number %></td>
@@ -41,7 +41,7 @@
             <% end %>
           </td>
         </tr>
-        <%# end %>
+        <% end %>
       <% end %>
     </tbody>
   </table>
