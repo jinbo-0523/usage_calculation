@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[edit update destroy]
-  before_action :get_users, only:%i[new create edit update destroy]
+  before_action :set_user,  only: %i[edit update destroy]
+  before_action :get_users, only: %i[new create edit update destroy]
   
   def new
     @user = current_company.users.new

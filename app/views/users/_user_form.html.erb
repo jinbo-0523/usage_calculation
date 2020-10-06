@@ -11,6 +11,7 @@
   <div class="form-group">
     <%= form.label :rank_id %>
     <%= form.select :rank_id, @ranks.pluck(:name, :id),{} , class: "form-control"%>
+    
     <%# pluckで配列化する %>
 
   <% if action_name == 'new' %>

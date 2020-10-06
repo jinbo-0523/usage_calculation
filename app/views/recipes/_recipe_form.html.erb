@@ -1,0 +1,40 @@
+<%=  form_with model: @recipe, local: true do |form|%>
+
+  <div class="field form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "form-control"%>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :brand_id %>
+    <%= form.select :brand_id, @brands.pluck(:name, :id),{} , class: "form-control"%>
+  </div>
+
+  <div id="food_recipes">
+    <%= form.fields_for :food_recipes do |f| %>
+      <%= f.label :food_id %>/
+      <%= f.label :amount %>
+      <%= render 'food_recipe_fields', f: f %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association 'レシピ食材追加', form ,:food_recipes %>
+    </div>
+  </div>
+
+  <%= link_to "食材が足りない場合はこちら", new_food_path %>
+  
+  <% if action_name == 'new' %>
+    <div class="field form-group">
+      <% form.label :display %>
+      <% form.text_field :display, class: "form-control"%>
+    </div>
+  <% else %>
+    <div class="field custom-control custom-switch">
+      <%= form.check_box :display, {class: "custom-control-input"}, checked_value = "true", unchecked_value = "false" %>
+      <%= form.label :display, class: "custom-control-label" %>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <%= form.submit button_value, class: "btn btn-success btn-block" %>
+  </div>
+<% end %>

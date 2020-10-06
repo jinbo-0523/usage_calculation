@@ -17,3 +17,14 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 require("bootstrap/dist/js/bootstrap")
 require("@fortawesome/fontawesome-free/js/all")
+require("@nathanvda/cocoon")
+require("./flexselect")
+
+document.addEventListener("turbolinks:load", () => {
+  $("select.flexselect").flexselect();
+
+  $('#food_recipes').on('cocoon:after-insert', function(e, insertedItem, originalEvent) {
+    $("select.flexselect").flexselect();
+  });
+  
+});
