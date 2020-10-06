@@ -2,6 +2,7 @@ class CompaniesController < ApplicationController
   
   def index
     @company = current_company
+    @shops = current_company.shops.order(id: :asc)
   end
 
   def new

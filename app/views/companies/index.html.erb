@@ -1,9 +1,42 @@
 <%= render 'shared/flash_messages' %>
 <h1>飲食店向け  食材使用量計算アプリ</h1>
-<p>メニュー一覧</p>
-<div> <%= link_to "職位設定", new_rank_path %> </div>
-<div> <%= link_to "ユーザー設定", new_user_path %> </div>
-<div> <%= link_to "業態設定", new_brand_path %> </div>
-<div> <%= link_to "店舗設定", new_shop_path %> </div>
-<div> <%= link_to "食材設定", new_food_path %> </div>
-<div> <%= link_to "料理設定", new_recipe_path %> </div>
+  <p>メニュー一覧</p>
+  <div> <%= link_to "職位設定", new_rank_path %> </div>
+  <div> <%= link_to "ユーザー設定", new_user_path %> </div>
+  <div> <%= link_to "業態設定", new_brand_path %> </div>
+  <div> <%= link_to "店舗設定", new_shop_path %> </div>
+  <div> <%= link_to "食材設定", new_food_path %> </div>
+  <div> <%= link_to "料理設定", new_recipe_path %> </div>
+
+<div class= "index_area">
+  <h1 class="text-center">店舗一覧</h1>
+  <table class="table table-bordered table-striped mt-4">
+    <thead class="table-primary">
+      <tr>
+        <th scope="col">No.</th>
+        <th scope="col" class="w-20">店舗ID</th>
+        <th scope="col" class="w-20">業態</th></th>
+        <th scope="col" class="w-20">店名</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @shops.each do |shop| %>
+        <% if shop.display == true %>
+          <tr>
+            <th scope="row" class="text-right"><%= shop.id %></th>
+            <td class="break-word"><%= shop.number %></td>
+            <td class="break-word"><%= shop.brand.name %></td>
+            <td class="break-word"><%= shop.name %></td>
+          </td>
+          <td class="text-nowrap">
+            <%= link_to  shop_path(shop), class: "btn btn-primary" do %>
+              <i class="fas fa-search-plus"></i><span class="d-none d-md-inline"> 詳細</span>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
