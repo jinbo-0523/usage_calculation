@@ -17,16 +17,20 @@ class ShopsController < ApplicationController
       redirect_to new_shop_path, notice: "新しく店舗を作成しました"
     else
       flash.now[:alert] = "作成に失敗しました"
+      @q = current_company.shops.ransack(params[:q])
+      @search_shop = @q.result
       @brands = current_company.brands.order(id: :asc)
       render :new
     end
   end
-
+  
   def show
   end
   
   def edit
     @brands = current_company.brands.order(id: :asc)
+    @q = current_company.shops.ransack(params[:q])
+    @search_shop = @q.result
     
   end
   
