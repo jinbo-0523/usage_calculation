@@ -18,17 +18,20 @@ class RecipesController < ApplicationController
   end
   
   def create
-    @foods = current_company.foods.order(id: :asc)
-    @brands = current_company.brands.order(id: :asc)
-    @food = current_company.foods.find(params[:recipe][:brand_id])
+    # brand_id が自分の会社のものかチェック
+    @brand = current_company.brands.find(recipe_params[:brand_id])
+    # 自分の会社の食材かチェック
+    request_food_ids = recipe_params[:food_recipes_attributes].values.map { |param| param[:food_id].to_i }
+    raise ActiveRecord::RecordNotFound unless (request_food_ids - current_company.foods.ids).empty?
     
-    @brand = current_company.brands.find(params[:recipe][:brand_id])
-    @recipe =Recipe.new(recipe_params)
+    @recipe = Recipe.new(recipe_params)
     if @recipe.save
       redirect_to new_recipe_path, notice: "新しくレシピを作成しました"
     else
       flash.now[:alert] = "作成に失敗しました"
       @brands = current_company.brands.order(id: :asc)
+      @q = current_company.recipes.ransack(params[:q])
+      @search_recipe = @q.result  
       @foods = current_company.foods.order(id: :asc)
       render :new
     end
