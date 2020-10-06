@@ -3,8 +3,10 @@ class ShopsController < ApplicationController
   before_action :set_shop,  only: %i[edit update destroy]
   
   def new
-    @shop = current_company.shops.new
     @brands = current_company.brands.order(id: :asc)
+    @q = current_company.shops.ransack(params[:q])
+    @search_shop = @q.result
+    @shop = current_company.shops.new
   end
   
   def create
