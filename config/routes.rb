@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'repors/index'
+  get 'repors/new'
+  get 'repors/create'
+  get 'repors/show'
+  get 'repors/edit'
+  get 'repors/update'
+  get 'repors/destroy'
   root to: 'companies#index'
   devise_for :companies
   resources :companies

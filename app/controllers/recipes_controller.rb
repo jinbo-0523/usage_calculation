@@ -23,7 +23,7 @@ class RecipesController < ApplicationController
     # 自分の会社の食材かチェック
     request_food_ids = recipe_params[:food_recipes_attributes].values.map { |param| param[:food_id].to_i }
     raise ActiveRecord::RecordNotFound unless (request_food_ids - current_company.foods.ids).empty?
-    
+
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
       redirect_to new_recipe_path, notice: "新しくレシピを作成しました"
