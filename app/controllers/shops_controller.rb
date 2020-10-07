@@ -28,13 +28,14 @@ class ShopsController < ApplicationController
     @shop = current_company.shops.find(params[:id])
     # ＃showに必要なもの
     #   値は？     →@report
-    @reports = @shop.reports.order(id: :asc)
+    @reports = @shop.reports.order(id: :asc).includes(:order)
     #             →@order
     # @orders = current_company.orders.order(id: :asc)
     #             →@user
     @users = current_company.users.order(id: :asc)
     @foods = current_company.foods.order(id: :asc)
     @recipes = current_company.recipes.order(id: :asc)
+    @order = 
 
   end
   
