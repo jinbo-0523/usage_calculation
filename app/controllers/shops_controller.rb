@@ -25,6 +25,17 @@ class ShopsController < ApplicationController
   end
   
   def show
+    @shop = current_company.shops.find(params[:id])
+    # ＃showに必要なもの
+    #   値は？     →@report
+    @reports = @shop.reports.order(id: :asc)
+    #             →@order
+    # @orders = current_company.orders.order(id: :asc)
+    #             →@user
+    @users = current_company.users.order(id: :asc)
+    @foods = current_company.foods.order(id: :asc)
+    @recipes = current_company.recipes.order(id: :asc)
+
   end
   
   def edit
@@ -63,4 +74,3 @@ class ShopsController < ApplicationController
     params.require(:shop).permit(:number, :brand_id, :name, :display)
   end
 end
-

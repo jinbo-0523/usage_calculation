@@ -11,7 +11,7 @@
 <div class= "index_area">
   <h1 class="text-center">店舗一覧</h1>
       <%= search_form_for @q, url: root_path do |f| %>
-        <%= f.search_field :name_cont %>
+        <%= f.search_field :name_cont, placeholder: "店舗名を入力" %>
         <% f.label :brand_id_eq %>
         <%= f.collection_select :brand_id_eq, @brands, :id, :name, :include_blank => 'ブランド指定' %>
         <%= f.submit "検索" %>
@@ -34,13 +34,12 @@
             <td class="break-word"><%= shop.number %></td>
             <td class="break-word"><%= shop.brand.name %></td>
             <td class="break-word"><%= shop.name %></td>
-          </td>
-          <td class="text-nowrap">
-            <%= link_to  shop_path(shop), class: "btn btn-primary" do %>
-              <i class="far fa-file-alt"></i></i><span class="d-none d-md-inline"> 詳細</span>
-            <% end %>
-          </td>
-        </tr>
+            <td class="text-nowrap">
+              <%= link_to  shop_path(shop), class: "btn btn-primary" do %>
+                <i class="far fa-file-alt"></i></i><span class="d-none d-md-inline"> 詳細</span>
+              <% end %>
+            </td>
+          </tr>
         <% end %>
       <% end %>
     </tbody>

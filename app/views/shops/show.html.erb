@@ -1,1 +1,64 @@
 <h1 class="text-center"> 店舗詳細</h1>
+<%# #showに必要なもの
+値は？
+  →@report
+  →@order
+  →@recipe
+  →@food
+形は？
+  →tableタグ
+    →縦にrecipe、横にreportを
+使うものは？→×Kaminari （一ヶ月毎）→JSでできる
+
+テーブルタグ使用×②
+①order一覧テーブル
+theadに@recipe.allをeach do
+tbodyに@reportを日付毎に表示
+横に伸ばす
+
+②food一覧テーブル
+theadに@food.allをeach do
+tbodyに計算内容（どうやって取る？）を日付毎に表示
+横に伸ばす %>
+<%# <tr><th>順位</th><th>名前</th><th>人気度</th><th>備考</th></tr>
+<tr><th>１位</th><td>トロ</td><td>☆☆☆☆☆</td><td>やはり何といってもトロ！</td></tr> %>
+<div class="orders_table">
+  <table>
+    <caption>出数の一覧</caption>
+    <%# 目次の内容 %>
+    <thead>
+      <tr>
+        <th>日付</th>
+        <th>売上</th>
+        <th>作成者</th>
+        <% @recipes.each do |recipe| %>
+          <th><%= recipe.name %></th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <%# 中身のデータ %>
+      <% @reports.each do |report| %>
+        <tr>
+          <th><%= report.date %></th>
+          <th><%= report.sale %>千円</th>
+          <th><%= report.user.name %></th>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="reports_table">
+  <table>
+    <caption>食材使用量の一覧</caption>
+    <thead>
+      <tr>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+      </tr>
+    </tbody>
+  </table>
+</div>

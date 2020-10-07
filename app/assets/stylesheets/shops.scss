@@ -1,3 +1,30 @@
 // Place all the styles related to the shops controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.orders_table {
+  overflow-x : auto 
+}
+.reports_table {
+  overflow-x : auto 
+}
+
+thead {
+  display: flex;
+  float: left;
+}
+thead th:first-child:before {
+ content: ' ';
+ padding: 1em;
+}
+tbody {
+  display: flex;
+  width: auto;
+}
+tbody tr {
+  display: flex;
+  flex-direction: column;
+}
+thead tr {
+  display: flex;
+  flex-direction: column;
+}

@@ -145,5 +145,3 @@ orderI = recipeI.orders.create!(id:  9,order: 3, report_id:  9)
 orderJ = recipeJ.orders.create!(id: 10,order: 1, report_id: 10)
 orderK = recipeK.orders.create!(id: 11,order: 8, report_id: 11)
 orderL = recipeL.orders.create!(id: 12,order: 5, report_id: 12)
-
-
