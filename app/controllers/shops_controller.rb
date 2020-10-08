@@ -5,7 +5,7 @@ class ShopsController < ApplicationController
   def new
     @brands = current_company.brands.where(display: true).order(id: :asc)
     @q = current_company.shops.ransack(params[:q])
-    @search_shop = @q.result.order(id: :asc).order(id: :asc)
+    @search_shop = @q.result.order(id: :asc)
     @shop = current_company.shops.new
   end
   
@@ -28,7 +28,7 @@ class ShopsController < ApplicationController
     # 詳細表示しようとしたshopのID
     @shop = current_company.shops.find(params[:id])
     # そこのreportとrecipeを以下で取ってきている
-    @recipes = @shop.brand.recipes.order(:id)
+    @recipes = @shop.brand.recipes.where(display: true).order(:id)
     @reports = @shop.reports.order(date: :desc)
     @foods = current_company.foods.where(display: true).order(id: :asc)
   end

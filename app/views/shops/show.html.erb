@@ -1,32 +1,11 @@
-<h1 class="text-center"> 店舗詳細</h1>
-<%# #showに必要なもの
-値は？
-  →@report
-  →@order
-  →@recipe
-  →@food
-形は？
-  →tableタグ
-    →縦にrecipe、横にreportを
-使うものは？→×Kaminari （一ヶ月毎）→JSでできる
-
-テーブルタグ使用×②
-①order一覧テーブル
-theadに@recipe.allをeach do
-tbodyに@reportを日付毎に表示
-横に伸ばす
-
-②food一覧テーブル
-theadに@food.allをeach do
-tbodyに計算内容（どうやって取る？）を日付毎に表示
-横に伸ばす %>
-<%# <tr><th>順位</th><th>名前</th><th>人気度</th><th>備考</th></tr>
-<tr><th>１位</th><td>トロ</td><td>☆☆☆☆☆</td><td>やはり何といってもトロ！</td></tr> %>
+<%= link_to "出数登録・計算", new_report_path(@shop) %>
+<h1 class="text-center"><%= [@shop.number] %> <%=  @shop.brand[:name] %> <%= @shop.name %> </h1>
 <div>
   <h3>出数一覧</h3>
     <table class="orders__table table table-bordered table-striped mt-4">
       <thead class="orders__table__header table-primary">
         <tr class="orders__table__header__lists">
+          <th class="list" scope="row">　</th>
           <th class="list" scope="row">日付</th>
           <th class="list" scope="row">売上</th>
           <th class="list" scope="row">作成者</th>
@@ -39,6 +18,8 @@ tbodyに計算内容（どうやって取る？）を日付毎に表示
       <tbody class="orders__table__body">
         <% @reports.each do |report| %>
           <tr class="orders__table__body__lists">
+              <%# ↓↓↓あとでpathの記入↓↓↓ %>
+            <td><%= link_to  "編集" %></td>
             <td><%= report.date %></td>
             <td><%= report.sale %>千円</td>
             <td><%= report.user.name %></td>
@@ -46,7 +27,6 @@ tbodyに計算内容（どうやって取る？）を日付毎に表示
             <%# 個々に取り出したreportのうち、recipe_id全部から同じidのレシピのみ検索してcountカラムを取得。値がなければ０とする %>
               <td><%= report.orders.find_by(recipe_id: recipe.id)&.count || 0 %></td>
             <% end %>
-            
           </tr>
         <% end %>
       </tbody>
@@ -55,7 +35,7 @@ tbodyに計算内容（どうやって取る？）を日付毎に表示
 
 <div>
   <h3>食材一覧</h3>
-    <table class="reports__table table table-bordered table-striped mt-4"">
+    <table class="reports__table table table-bordered table-striped mt-4">
       <thead class="reports__table__header table-primary">
         <tr class="reports__table__header__lists">
           <% @foods.each do |food| %>

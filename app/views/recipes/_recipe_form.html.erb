@@ -1,11 +1,11 @@
 <%=  form_with model: @recipe, local: true do |form|%>
 
-  <div class="field form-group">
+  <div class="form-group">
     <%= form.label :name %>
     <%= form.text_field :name, class: "form-control"%>
   </div>
 
-  <div class="field form-group">
+  <div class="form-group">
     <%= form.label :brand_id %>
     <%= form.select :brand_id, @brands.pluck(:name, :id),{} , class: "form-control"%>
   </div>
@@ -24,12 +24,12 @@
   <%= link_to "食材が足りない場合はこちら", new_food_path %>
   
   <% if action_name == 'new' %>
-    <div class="field form-group">
+    <div class="form-group">
       <% form.label :display %>
       <% form.text_field :display, class: "form-control"%>
     </div>
   <% else %>
-    <div class="field custom-control custom-switch">
+    <div class="custom-control custom-switch">
       <%= form.check_box :display, {class: "custom-control-input"}, checked_value = "true", unchecked_value = "false" %>
       <%= form.label :display, class: "custom-control-label" %>
     </div>
