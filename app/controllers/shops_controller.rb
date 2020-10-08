@@ -25,27 +25,19 @@ class ShopsController < ApplicationController
   end
   
   def show
+    # 詳細表示しようとしたshopのID
     @shop = current_company.shops.find(params[:id])
-    # ＃showに必要なもの
-    #   値は？     →@report
-    @reports = @shop.reports.order(id: :asc).includes(:order)
-    #             →@order
-    # @orders = current_company.orders.order(id: :asc)
-    #             →@user
-    @users = current_company.users.order(id: :asc)
-    @foods = current_company.foods.order(id: :asc)
-    @recipes = current_company.recipes.order(id: :asc)
-    @order = 
-
+    # そこのreportとrecipeを以下で取ってきている
+    @recipes = @shop.brand.recipes.order(:id)
+    @reports = @shop.reports.order(date: :asc)
   end
-  
+
   def edit
     @brands = current_company.brands.where(display: true).order(id: :asc)
     @q = current_company.shops.ransack(params[:q])
     @search_shop = @q.result
     
   end
-  
   def update
     if @shop.update(shop_params)
       redirect_to new_shop_path, notice:"店舗を編集しました"
