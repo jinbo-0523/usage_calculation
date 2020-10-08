@@ -25,19 +25,19 @@ tbodyに計算内容（どうやって取る？）を日付毎に表示
 <div>
   <table class="orders__table table table-bordered table-striped mt-4">
     <thead class="orders__table__header table-primary">
-      <tr class="orders__table__header__list">
-        <th scope="row">日付</th>
-        <th scope="row">売上</th>
-        <th scope="row">作成者</th>
+      <tr class="orders__table__header__lists">
+        <th class="list" scope="row">日付</th>
+        <th class="list" scope="row">売上</th>
+        <th class="list" scope="row">作成者</th>
         <% @recipes.each do |recipe| %>
-          <th scope="row"><%= recipe.name %></th>
+          <th class="list" scope="row"><%= recipe.name %></th>
         <% end %>
       </tr>
     </thead>
     
     <tbody class="orders__table__body">
       <% @reports.each do |report| %>
-        <tr  class="orders__table__body_list">
+        <tr class="orders__table__body__lists">
           <td><%= report.date %></td>
           <td><%= report.sale %>千円</td>
           <td><%= report.user.name %></td>
@@ -45,21 +45,27 @@ tbodyに計算内容（どうやって取る？）を日付毎に表示
           <%# 個々に取り出したreportのうち、recipe_id全部から同じidのレシピのみ検索してcountカラムを取得。値がなければ０とする %>
             <td><%= report.orders.find_by(recipe_id: recipe.id)&.count || 0 %></td>
           <% end %>
-          <td></td>
+          
         </tr>
       <% end %>
     </tbody>
   </table>
 </div>
 
-<div class="reports_table">
-  <table>
-    <thead>
-      <tr>
+<div>
+  <table class="reports__table table table-bordered table-striped mt-4"">
+    <thead class="reports__table__header table-primary">
+      <tr class="reports__table__header__lists">
+        <th class="list"></th>
+        <th class="list"></th>
+        <th class="list"></th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
+    <tbody class="reports__table__body">
+      <tr class="reports__table__body__lists">
+        <td></td>
+        <td></td>
+        <td></td>
       </tr>
     </tbody>
   </table>

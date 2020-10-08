@@ -3,19 +3,25 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .orders__table {
   overflow-x : auto ;
-  .orders__table__header {
+  &__header {
     display: flex;
     float: left;
-    .orders__table__header__list {
+    border-bottom: 0px solid #7abaff;
+    &__lists {
       display: flex;
       flex-direction: column;
+      .list {
+        border-bottom-width: 1px;
+        
+      }
+
     }
   }
   
-  .orders__table__body{
+  &__body{
     display: flex;
     width: auto;
-    .orders__table__body_list {
+    &__lists {
       display: flex;
       flex-direction: column;
     }
@@ -23,6 +29,31 @@
 
 }
 
-.reports_table {
-  overflow-x : auto 
+.reports__table {
+  overflow-x : auto ;
+  &__header {
+    display: flex;
+    float: left;
+    border-bottom: 1px solid #7abaff;
+    &__lists {
+      display: flex;
+      flex-direction: column;
+      .list {
+        border-bottom-width: 1px;
+        
+      }
+
+    }
+  }
+  
+  &__body{
+    display: flex;
+    width: auto;
+    &__lists {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
 }
+
