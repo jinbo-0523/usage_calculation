@@ -23,50 +23,52 @@ tbodyに計算内容（どうやって取る？）を日付毎に表示
 <%# <tr><th>順位</th><th>名前</th><th>人気度</th><th>備考</th></tr>
 <tr><th>１位</th><td>トロ</td><td>☆☆☆☆☆</td><td>やはり何といってもトロ！</td></tr> %>
 <div>
-  <table class="orders__table table table-bordered table-striped mt-4">
-    <thead class="orders__table__header table-primary">
-      <tr class="orders__table__header__lists">
-        <th class="list" scope="row">日付</th>
-        <th class="list" scope="row">売上</th>
-        <th class="list" scope="row">作成者</th>
-        <% @recipes.each do |recipe| %>
-          <th class="list" scope="row"><%= recipe.name %></th>
-        <% end %>
-      </tr>
-    </thead>
-    
-    <tbody class="orders__table__body">
-      <% @reports.each do |report| %>
-        <tr class="orders__table__body__lists">
-          <td><%= report.date %></td>
-          <td><%= report.sale %>千円</td>
-          <td><%= report.user.name %></td>
+  <h3>出数一覧</h3>
+    <table class="orders__table table table-bordered table-striped mt-4">
+      <thead class="orders__table__header table-primary">
+        <tr class="orders__table__header__lists">
+          <th class="list" scope="row">日付</th>
+          <th class="list" scope="row">売上</th>
+          <th class="list" scope="row">作成者</th>
           <% @recipes.each do |recipe| %>
-          <%# 個々に取り出したreportのうち、recipe_id全部から同じidのレシピのみ検索してcountカラムを取得。値がなければ０とする %>
-            <td><%= report.orders.find_by(recipe_id: recipe.id)&.count || 0 %></td>
+            <th class="list" scope="row"><%= recipe.name %></th>
           <% end %>
-          
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      
+      <tbody class="orders__table__body">
+        <% @reports.each do |report| %>
+          <tr class="orders__table__body__lists">
+            <td><%= report.date %></td>
+            <td><%= report.sale %>千円</td>
+            <td><%= report.user.name %></td>
+            <% @recipes.each do |recipe| %>
+            <%# 個々に取り出したreportのうち、recipe_id全部から同じidのレシピのみ検索してcountカラムを取得。値がなければ０とする %>
+              <td><%= report.orders.find_by(recipe_id: recipe.id)&.count || 0 %></td>
+            <% end %>
+            
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 </div>
 
 <div>
-  <table class="reports__table table table-bordered table-striped mt-4"">
-    <thead class="reports__table__header table-primary">
-      <tr class="reports__table__header__lists">
-        <th class="list"></th>
-        <th class="list"></th>
-        <th class="list"></th>
-      </tr>
-    </thead>
-    <tbody class="reports__table__body">
-      <tr class="reports__table__body__lists">
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+  <h3>食材一覧</h3>
+    <table class="reports__table table table-bordered table-striped mt-4"">
+      <thead class="reports__table__header table-primary">
+        <tr class="reports__table__header__lists">
+          <% @foods.each do |food| %>
+            <th class="list" scope="row"><%= food.name %></th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody class="reports__table__body">
+        <tr class="reports__table__body__lists">
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
 </div>

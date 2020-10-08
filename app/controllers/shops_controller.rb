@@ -29,7 +29,8 @@ class ShopsController < ApplicationController
     @shop = current_company.shops.find(params[:id])
     # そこのreportとrecipeを以下で取ってきている
     @recipes = @shop.brand.recipes.order(:id)
-    @reports = @shop.reports.order(date: :asc)
+    @reports = @shop.reports.order(date: :desc)
+    @foods = current_company.foods.where(display: true).order(id: :asc)
   end
 
   def edit
