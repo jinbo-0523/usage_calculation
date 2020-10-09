@@ -75,3 +75,9 @@ class RecipesController < ApplicationController
   end
 end
 
+# ブランド結果からのレシピ
+@search_recipe = current_company.recipes.ransack(params[:q])
+@brand_recipes = @search_recipe.result.order(id: :asc)
+# ブランド検索からの店舗
+@search_shop   = current_company.shops.ransack(params[:q])
+@brand_shops = @search_recipe.result.order(id: :asc)

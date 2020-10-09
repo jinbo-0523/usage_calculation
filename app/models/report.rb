@@ -5,4 +5,5 @@ class Report < ApplicationRecord
   
   validates :date, presence: true, uniqueness: { scope: :shop_id }
   validates :sale, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  accepts_nested_attributes_for :order, allow_destroy: true
 end

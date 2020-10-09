@@ -1,5 +1,10 @@
 
 <h1>出数入力</h1>
+<%= search_form_for @q, url: new_report_path do |f| %>
+  <% f.label :id_eq %>
+  <%= f.collection_select :id_eq, @brands, :id, :name, :include_blank => 'ブランド指定' %>
+  <%= f.submit "検索"%>
+<% end %>
 <%= form_with model: @report, local: true do |form|%>
   <div class="form__box form-row">
     <%# date %>
@@ -22,13 +27,19 @@
     <%# shop_id %>
     <div class="form__box__shop form-group col">
       <%= form.label :shop_id %>
-      <%= form.select(:shop_id, @shops.pluck(:name, :id), {prompt: ""}, class: "flexselect form-control") %>
+      <%= form.select(:shop_id, @brand_shops.pluck(:name, :id), {prompt: ""}, class: "flexselect form-control") %>
     </div>
   </div>
   <%# 子テーブルのorderに %>
-  
-  
-  
+    <%= form.fields_for :orders do |f| %>
+      <% @brand_recipes.each do |recipe| %>
+        <div class="form-group">
+          <%= recipe.name %>の
+          <%= f.label :count %>
+          <%= f.number_field :count, class: "form-control", min: 0 %>
+        </div>
+      <% end %>
+    <% end %>
   <div>
                 <%# ↓↓↓↓あとで button_value に置き換え %>
     <%= form.submit "作成", class: "btn btn-success btn-block" %>
