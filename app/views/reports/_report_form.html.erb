@@ -1,0 +1,46 @@
+<%= search_form_for @q, url: new_report_path do |f| %>
+  <% f.label :id_eq %>
+  <%= f.collection_select :id_eq, @brands, :id, :name, { include_blank: 'ブランド指定' } %>
+  <%= f.submit "検索"%>
+<% end %>
+<%= form_with model: @report, local: true do |form|%>
+  <div class="form__box form-row">
+    <%# date %>
+    <div class="form__box__date formn-group col">
+      <%= form.label :date %>
+      <%= form.date_select :date, class: "form-control" %>
+    </div>
+    <%# sale %>
+    <div class="form__box__num formn-group col">
+      <%= form.label :sale %>
+      <%= form.number_field	 :sale, class: "form-control", min: 0%>
+    </div>
+  </div>
+  <div class="form-row">
+    <%# user %>
+    <div class="form__box__user form-group col">
+      <%= form.label :user_id %>
+      <%= form.select(:user_id, @users.pluck(:name, :id), {prompt: ""}, class: "flexselect form-control") %>
+    </div>
+    <%# shop_id %>
+    <div class="form__box__shop form-group col">
+      <%= form.label :shop_id %>
+      <%= form.select(:shop_id, @brand_shops.pluck(:name, :id), {prompt: ""}, class: "flexselect form-control") %>
+    </div>
+  </div>
+  <%# 子テーブルのorderに %>
+    <%= form.fields_for :orders do |f| %>
+        <div class="form-group">
+          <%= f.hidden_field :recipe_id, value: f.object.recipe_id %>
+          <%= f.label :count, "#{f.object.recipe_name}の注文数" %>
+          <%= f.number_field :count, class: "form-control", min: 0 %>
+        </div>
+      <%# end %>
+    <% end %>
+    <% if params[:q].present? %>
+      <input type="hidden" name="q[id_eq]" value="<%= params[:q][:id_eq] %>">
+    <% end %>
+  <div>
+    <%= form.submit "作成", class: "btn btn-success btn-block" %>
+  </div>
+<% end %>
