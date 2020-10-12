@@ -30,7 +30,6 @@ class ReportsController < ApplicationController
   end
   
   def create
-    # binding.pry
     @report = Report.new(report_params)
     if @report.save!
       redirect_to @report.shop, notice:"出数入力が完了しました"
@@ -53,12 +52,34 @@ class ReportsController < ApplicationController
   end
 
   def edit
-    @users
-    @brands
-    @recipes
+    @users = current_company.users.where(display: true).order(id: :asc)
+    @brands = current_company.brands.where(display: true).order(id: :asc)
+    @recipes = current_company.recipes.where(display: true).order(id: :asc)
+    @brands = current_company.brands.where(display: true).order(id: :asc)
+    @q = current_company.brands.ransack(params[:q])
+    @search_brands = @q.result
+    @brand_shops = Shop.where(brand_id: @search_brands.ids).order(id: :asc)
+    @brand_recipes = Recipe.where(brand_id: @search_brands.ids).order(id: :asc)
+    @report = Report.find(params[:id])
   end
 
   def update
+    @report = Report.find(params[:id])
+    
+    if @report.update(report_params)
+      redirect_to @report.shop, notice:"出数入力が完了しました"
+    else
+      @users = current_company.users.where(display: true).order(id: :asc)
+      @brands = current_company.brands.where(display: true).order(id: :asc)
+      @recipes = current_company.recipes.where(display: true).order(id: :asc)
+      @brands = current_company.brands.where(display: true).order(id: :asc)
+      @q = current_company.brands.ransack(params[:q])
+      @search_brands = @q.result
+      @brand_shops = Shop.where(brand_id: @search_brands.ids).order(id: :asc)
+      @brand_recipes = Recipe.where(brand_id: @search_brands.ids).order(id: :asc)
+      flash.now[:alert] = "編集に失敗しました"
+      render :edit
+    end
   end
 
   def destroy

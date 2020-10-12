@@ -18,8 +18,7 @@
       <tbody class="orders__table__body">
         <% @reports.each do |report| %>
           <tr class="orders__table__body__lists">
-              <%# ↓↓↓あとでpathの記入↓↓↓ %>
-            <td><%= link_to  "編集" %></td>
+            <td><%= link_to  "編集", edit_report_path(report) %></td>
             <td><%= report.date %></td>
             <td><%= report.sale %>千円</td>
             <td><%= report.user.name %></td>
