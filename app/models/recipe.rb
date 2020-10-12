@@ -1,6 +1,8 @@
 class Recipe < ApplicationRecord
   belongs_to :brand
   has_many :orders
+  has_many :reports, through: :orders
+  
   has_many :food_recipes, dependent: :destroy
   has_many :foods, through: :food_recipes
   accepts_nested_attributes_for :food_recipes, allow_destroy: true, reject_if: :reject_recipe
