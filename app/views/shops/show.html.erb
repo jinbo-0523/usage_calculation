@@ -18,10 +18,10 @@
       <tbody class="orders__table__body">
         <% @reports.each do |report| %>
           <tr class="orders__table__body__lists">
-            <td><%= link_to  "編集", edit_report_path(report) %></td>
-            <td><%= report.date %></td>
-            <td><%= report.sale %>千円</td>
-            <td><%= report.user.name %></td>
+            <td class="orders__table__body__lists__list"><%= link_to  "編集", edit_report_path(report) %></td>
+            <td class="orders__table__td"><%= report.date %></td>
+            <td class="orders__table__td"><%= report.sale %>千円</td>
+            <td class="orders__table__td"><%= report.user.name %></td>
             <% @recipes.each do |recipe| %>
             <%# 個々に取り出したreportのうち、recipe_id全部から同じidのレシピのみ検索してcountカラムを取得。値がなければ０とする %>
               <td><%= report.orders.find_by(recipe_id: recipe.id)&.count || 0 %></td>
@@ -37,20 +37,20 @@
     <table class="reports__table table table-bordered table-striped mt-4">
       <thead class="reports__table__header table-primary">
         <tr class="reports__table__header__lists">
+          <th>日付</th>
           <% @foods.each do |food| %>
             <th class="list" scope="row"><%= food.name %></th>
           <% end %>
         </tr>
       </thead>
       <tbody class="reports__table__body">
-      <% binding.pry %>
-        <% @reports.each do |report| %>
+        <% @food_list.each do |data| %>
           <tr class="reports__table__body__lists">
-            <%# report.food_recipe.each do |food| %>
-              <td><%#= food.amount* %></td>
-              <td></td>
-              <td></td>
-            <%# end %>
+            <td class="reports__table__td"><%= data[:date] %></td>
+            <% data[:amounts].each do |amount| %>
+              <td class="reports__table__td"><%= amount %></td>
+              <%# binding.pry %>
+            <% end %>
           </tr>
         <% end %>
       </tbody>

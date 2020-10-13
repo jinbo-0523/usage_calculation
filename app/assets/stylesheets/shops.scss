@@ -14,7 +14,7 @@
         border-bottom-width: 1px;
         
       }
-
+      
     }
   }
   
@@ -24,6 +24,9 @@
     &__lists {
       display: flex;
       flex-direction: column;
+      .orders__table__td {
+        width: 120px;
+      }
     }
   }
 
@@ -42,7 +45,7 @@
         border-bottom-width: 1px;
         
       }
-
+      
     }
   }
   
@@ -52,6 +55,9 @@
     &__lists {
       display: flex;
       flex-direction: column;
+      .reports__table__td {
+        width: 120px;
+      }
     }
   }
 
@@ -64,3 +70,4 @@
     // text-align: center;
   }
 }
+
