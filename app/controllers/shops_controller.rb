@@ -28,8 +28,8 @@ class ShopsController < ApplicationController
     # 詳細表示しようとしたshopのID
     @shop = current_company.shops.find(params[:id])
     # そこのreportとrecipeを以下で取ってきている
-    @recipes = @shop.brand.recipes.where(display: true).order(:id)
     @reports = @shop.reports.order(date: :desc)
+    @recipes = @shop.brand.recipes.where(display: true).order(:id)
     @foods = current_company.foods.where(display: true).order(id: :asc)
   end
 

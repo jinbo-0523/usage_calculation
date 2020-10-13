@@ -31,7 +31,7 @@ class ReportsController < ApplicationController
   
   def create
     @report = Report.new(report_params)
-    if @report.save!
+    if @report.save!]
       redirect_to @report.shop, notice:"出数入力が完了しました"
     else
       @users = current_company.users.where(display: true).order(id: :asc)
