@@ -18,6 +18,10 @@ class FoodsController < ApplicationController
     end
   end
   
+  def show
+    redirect_to edit_food_path
+  end
+
   def edit
   end
   

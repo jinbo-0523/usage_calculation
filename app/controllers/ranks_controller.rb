@@ -20,8 +20,9 @@ class RanksController < ApplicationController
   end
   
   def show
+    redirect_to edit_rank_path
   end
-  
+
   def edit
   end
   

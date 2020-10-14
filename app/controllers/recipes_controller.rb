@@ -38,6 +38,10 @@ class RecipesController < ApplicationController
     end
   end
   
+  def show
+    redirect_to edit_recipe_path
+  end
+
   def edit
     @brands = current_company.brands.where(display: true).order(id: :asc)
     @foods = current_company.foods.order(id: :asc)

@@ -23,6 +23,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    redirect_to edit_user_path
+  end
+
   def edit
     @ranks = current_company.ranks.order(id: :asc)
     

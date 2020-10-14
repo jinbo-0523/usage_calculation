@@ -18,8 +18,9 @@ class BrandsController < ApplicationController
       render :new
     end
   end
-  
+
   def show
+    redirect_to edit_brand_path
   end
   
   def edit

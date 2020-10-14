@@ -35,7 +35,7 @@ class ReportsController < ApplicationController
   end
 
   def show
-    # 多分不要
+    redirect_to edit_report_path
   end
 
   def edit
@@ -68,8 +68,6 @@ class ReportsController < ApplicationController
     end
   end
 
-  def destroy
-  end
   private
   def report_params
     params.require(:report).permit(:date, :sale, :user_id, :shop_id, orders_attributes:[:id, :count, :recipe_id, :report_id])
