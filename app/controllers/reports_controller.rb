@@ -42,11 +42,12 @@ class ReportsController < ApplicationController
     @users = current_company.users.where(display: true).order(id: :asc)
     @brands = current_company.brands.where(display: true).order(id: :asc)
     @recipes = current_company.recipes.where(display: true).order(id: :asc)
-    @q = current_company.brands.ransack(params[:q])
-    @search_brands = @q.result
+    # @search_brands = current_company.brands.ransack(params[:id]).result
+    @report = Report.find(params[:id])
+    q = { id_eq: @report.shop.brand.id }
+    @search_brands = current_company.brands.ransack(q).result
     @brand_shops = Shop.where(brand_id: @search_brands.ids).order(id: :asc)
     @brand_recipes = Recipe.where(brand_id: @search_brands.ids).order(id: :asc)
-    @report = Report.find(params[:id])
   end
 
   def update

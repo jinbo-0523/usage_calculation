@@ -1,7 +1,9 @@
-<%= search_form_for @q, url: new_report_path do |f| %>
-  <% f.label :id_eq %>
-  <%= f.collection_select :id_eq, @brands, :id, :name, { include_blank: 'ブランド指定' } %>
-  <%= f.submit "検索"%>
+<% if action_name == 'new' %>
+  <%= search_form_for @q, url: new_report_path do |f| %>
+    <% f.label :id_eq %>
+    <%= f.collection_select :id_eq, @brands, :id, :name, { include_blank: 'ブランド指定' } %>
+    <%= f.submit "検索"%>
+  <% end %>
 <% end %>
 <%= form_with model: @report, local: true do |form|%>
   <div class="form__box form-row">
@@ -30,18 +32,17 @@
   </div>
   <%# 子テーブルのorderに %>
     <%= form.fields_for :orders do |f| %>
-        <div class="form-group">
-          <%= f.hidden_field :recipe_id, value: f.object.recipe_id %>
-          <%# [f.index]とすることでコントローラーの記述減。配列で取れているのでindexが使える %>
-          <%= f.label :count, "#{@brand_recipes[f.index].name}の注文数" %>
-          <%= f.number_field :count, class: "form-control", min: 0 %>
-        </div>
-      <%# end %>
+      <div class="form-group">
+        <%= f.hidden_field :recipe_id, value: f.object.recipe_id %>
+        <%# [f.index]とすることでコントローラーの記述減。配列で取れているのでindexが使える %>
+        <%= f.label :count, "#{@brand_recipes[f.index].name}の注文数" %>
+        <%= f.number_field :count, class: "form-control", min: 0 %>
+      </div>
     <% end %>
     <% if params[:q].present? %>
       <input type="hidden" name="q[id_eq]" value="<%= params[:q][:id_eq] %>">
     <% end %>
   <div>
-    <%= form.submit "作成", class: "btn btn-success btn-block" %>
+    <%= form.submit button_value, class: "btn btn-success btn-block" %>
   </div>
 <% end %>
