@@ -2,6 +2,9 @@ class UsersController < ApplicationController
   before_action :set_user,  only: %i[edit update destroy]
   before_action :get_users, only: %i[new create edit update destroy]
   
+  def index
+    redirect_to new_user_path
+  end
   def new
     @user = current_company.users.new
     @ranks = current_company.ranks.order(id: :asc)

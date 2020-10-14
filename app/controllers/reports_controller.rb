@@ -1,6 +1,6 @@
 class ReportsController < ApplicationController
   def index
-    # ここは多分いらない
+    redirect_to new_report_path
   end
 
   def new

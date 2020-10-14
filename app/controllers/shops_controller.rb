@@ -2,6 +2,9 @@ class ShopsController < ApplicationController
   before_action :get_shops, only: %i[new create edit update destroy]
   before_action :set_shop,  only: %i[edit update destroy]
   
+  def index
+    redirect_to new_shop_path
+  end
   def new
     @brands = current_company.brands.where(display: true).order(id: :asc)
     @q = current_company.shops.ransack(params[:q])

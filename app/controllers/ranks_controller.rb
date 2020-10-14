@@ -2,6 +2,7 @@ class RanksController < ApplicationController
   before_action :set_rank, only: %i[edit update destroy]
   before_action :get_ranks, only: %i[new create edit update destroy]
   def index
+    redirect_to new_rank_path
   end
   
   def new

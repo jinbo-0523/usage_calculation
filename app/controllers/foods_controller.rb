@@ -1,7 +1,9 @@
 class FoodsController < ApplicationController
   before_action :get_foods, only: %i[new create edit update destroy]
   before_action :set_food, only: %i[edit update destroy]
-  
+  def index
+    redirect_to new_food_path
+  end
   def new
     @food = current_company.foods.new
   end

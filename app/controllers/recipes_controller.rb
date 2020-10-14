@@ -4,7 +4,7 @@ class RecipesController < ApplicationController
   
 
   def index
-    
+    redirect_to new_recipe_path
   end
 
   def new

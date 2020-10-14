@@ -3,8 +3,8 @@ class BrandsController < ApplicationController
   before_action :get_brands, only: %i[new create edit update destroy]
 
   def index
-  end
-  
+    redirect_to new_brand_path
+  end  
   def new
     @brand = current_company.brands.new
   end
