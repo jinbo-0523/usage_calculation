@@ -1,3 +1,73 @@
 // Place all the styles related to the shops controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.orders__table {
+  overflow-x : auto ;
+  &__header {
+    display: flex;
+    float: left;
+    border-bottom: 0px solid #7abaff;
+    &__lists {
+      display: flex;
+      flex-direction: column;
+      .list {
+        border-bottom-width: 1px;
+        
+      }
+      
+    }
+  }
+  
+  &__body{
+    display: flex;
+    width: auto;
+    &__lists {
+      display: flex;
+      flex-direction: column;
+      .orders__table__td {
+        width: 120px;
+      }
+    }
+  }
+
+}
+
+.reports__table {
+  overflow-x : auto ;
+  &__header {
+    display: flex;
+    float: left;
+    border-bottom: 1px solid #7abaff;
+    &__lists {
+      display: flex;
+      flex-direction: column;
+      .list {
+        border-bottom-width: 1px;
+        
+      }
+      
+    }
+  }
+  
+  &__body{
+    display: flex;
+    width: auto;
+    &__lists {
+      display: flex;
+      flex-direction: column;
+      .reports__table__td {
+        width: 120px;
+      }
+    }
+  }
+
+}
+
+.form__box__date {
+  line-height: normal;
+  // display: flex;
+  select {
+    // text-align: center;
+  }
+}
+

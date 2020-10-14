@@ -1,7 +1,10 @@
 class CompaniesController < ApplicationController
   
   def index
-    @company = current_company
+    @brands = current_company.brands.where(display: true).order(id: :asc)
+    @shops = current_company.shops.order(id: :asc)
+    @q = current_company.shops.ransack(params[:q])
+    @search_shop = @q.result.order(id: :asc)
   end
 
   def new

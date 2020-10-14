@@ -4,14 +4,15 @@ class RecipesController < ApplicationController
   
 
   def index
-    
-    
+    redirect_to new_recipe_path
   end
+
   def new
     # indexで@recipesが必要
-    @brands = current_company.brands.order(id: :asc)
+    @brands = current_company.brands.where(display: true).order(id: :asc)
     @q = current_company.recipes.ransack(params[:q])
-    @search_recipe = @q.result
+    @search_recipe = @q.result.order(id: :asc)
+    
     @foods = current_company.foods.order(id: :asc)
     @recipe = current_company.recipes.new
     @recipe.food_recipes.build
@@ -23,25 +24,29 @@ class RecipesController < ApplicationController
     # 自分の会社の食材かチェック
     request_food_ids = recipe_params[:food_recipes_attributes].values.map { |param| param[:food_id].to_i }
     raise ActiveRecord::RecordNotFound unless (request_food_ids - current_company.foods.ids).empty?
-    
+
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
       redirect_to new_recipe_path, notice: "新しくレシピを作成しました"
     else
       flash.now[:alert] = "作成に失敗しました"
-      @brands = current_company.brands.order(id: :asc)
+      @brands = current_company.brands.where(display: true).order(id: :asc)
       @q = current_company.recipes.ransack(params[:q])
-      @search_recipe = @q.result  
+      @search_recipe = @q.result.order(id: :asc)  
       @foods = current_company.foods.order(id: :asc)
       render :new
     end
   end
   
+  def show
+    redirect_to edit_recipe_path
+  end
+
   def edit
-    @brands = current_company.brands.order(id: :asc)
+    @brands = current_company.brands.where(display: true).order(id: :asc)
     @foods = current_company.foods.order(id: :asc)
     @q = current_company.recipes.ransack(params[:q])
-    @search_recipe = @q.result
+    @search_recipe = @q.result.order(id: :asc)
   end
   
   def update
@@ -49,7 +54,7 @@ class RecipesController < ApplicationController
       redirect_to new_recipe_path, notice:"レシピを編集しました"
     else
       flash.now[:alert] = "編集に失敗しました"
-      @brands = current_company.brands.order(id: :asc)
+      @brands = current_company.brands.where(display: true).order(id: :asc)
       render :edit
     end
   end
@@ -73,4 +78,3 @@ class RecipesController < ApplicationController
     params.require(:recipe).permit(:name, :brand_id,  :display, food_recipes_attributes: [:id, :recipe_id, :food_id, :amount, :_destroy])
   end
 end
-

@@ -1,0 +1,57 @@
+<%= link_to "出数登録・計算", new_report_path(@shop) %>
+<h1 class="text-center"><%= [@shop.number] %> <%=  @shop.brand[:name] %> <%= @shop.name %> </h1>
+<div>
+  <h3>出数一覧</h3>
+    <table class="orders__table table table-bordered table-striped mt-4">
+      <thead class="orders__table__header table-primary">
+        <tr class="orders__table__header__lists">
+          <th class="list" scope="row">　</th>
+          <th class="list" scope="row">日付</th>
+          <th class="list" scope="row">売上</th>
+          <th class="list" scope="row">作成者</th>
+          <% @recipes.each do |recipe| %>
+            <th class="list" scope="row"><%= recipe.name %></th>
+          <% end %>
+        </tr>
+      </thead>
+      
+      <tbody class="orders__table__body">
+        <% @reports.each do |report| %>
+          <tr class="orders__table__body__lists">
+            <td class="orders__table__body__lists__list"><%= link_to  "編集", edit_report_path(report) %></td>
+            <td class="orders__table__td"><%= report.date %></td>
+            <td class="orders__table__td"><%= report.sale %>千円</td>
+            <td class="orders__table__td"><%= report.user.name %></td>
+            <% @recipes.each do |recipe| %>
+            <%# 個々に取り出したreportのうち、recipe_id全部から同じidのレシピのみ検索してcountカラムを取得。値がなければ０とする %>
+              <td><%= report.orders.find_by(recipe_id: recipe.id)&.count || 0 %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>
+
+<div>
+  <h3>食材一覧</h3>
+    <table class="reports__table table table-bordered table-striped mt-4">
+      <thead class="reports__table__header table-primary">
+        <tr class="reports__table__header__lists">
+          <th>日付</th>
+          <% @foods.each do |food| %>
+            <th class="list" scope="row"><%= food.name %></th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody class="reports__table__body">
+        <% @food_list.each do |data| %>
+          <tr class="reports__table__body__lists">
+            <td class="reports__table__td"><%= data[:date] %></td>
+            <% data[:amounts].each do |amount| %>
+              <td class="reports__table__td"><%= amount %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>
