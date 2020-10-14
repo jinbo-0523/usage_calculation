@@ -30,12 +30,12 @@ class ShopsController < ApplicationController
     # そこのreportとrecipeを以下で取ってきている
     @reports = @shop.reports.order(date: :desc)
     @recipes = @shop.brand.recipes.where(display: true).order(:id)
-    food_ids = @shop.brand.display_food_ids
-    @foods = Food.where(id: food_ids).order(id: :asc)
+    @foods = Food.where(id: @shop.brand.display_food_ids).order(id: :asc)
     @food_list = @reports.list_of_food_recipes.map do |food_recipe|
-      amounts = food_ids.map do |id|
-        index = food_recipe[:recipe_ids].index(id)
-        index.nil? ? 0 : food_recipe[:amounts][index]
+      amounts = @foods.map do |food|
+        index = food_recipe[:recipe_ids].index(food.id)
+        amount = index.nil? ? 0 : food_recipe[:amounts][index].fdiv(food.total).round(1)
+        "#{amount}#{food.unit}"
       end
       {
         date: food_recipe[:date],
