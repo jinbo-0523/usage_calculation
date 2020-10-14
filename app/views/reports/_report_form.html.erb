@@ -32,7 +32,8 @@
     <%= form.fields_for :orders do |f| %>
         <div class="form-group">
           <%= f.hidden_field :recipe_id, value: f.object.recipe_id %>
-          <%= f.label :count, "#{f.object.recipe_name}の注文数" %>
+          <%# [f.index]とすることでコントローラーの記述減。配列で取れているのでindexが使える %>
+          <%= f.label :count, "#{@brand_recipes[f.index].name}の注文数" %>
           <%= f.number_field :count, class: "form-control", min: 0 %>
         </div>
       <%# end %>
