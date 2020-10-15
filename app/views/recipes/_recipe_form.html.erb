@@ -1,5 +1,5 @@
+<%= render "layouts/error_messages", object: @recipe %>
 <%=  form_with model: @recipe, local: true do |form|%>
-
   <div class="form-group">
     <%= form.label :name %>
     <%= form.text_field :name, class: "form-control"%>
