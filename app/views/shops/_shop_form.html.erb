@@ -7,7 +7,7 @@
 
   <div class="form-group">
     <%= form.label :brand_id %>
-    <%= form.select :brand_id, @brands.pluck(:name, :id),{} , class: "form-control valid-field" ) %>
+    <%= form.select :brand_id, @brands.pluck(:name, :id),{} , class: "form-control valid-field"  %>
       <div class="invalid-feedback">選択して下さい</div>
     <%# pluckで配列化する %>
 
