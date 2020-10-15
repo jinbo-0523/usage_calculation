@@ -26,5 +26,22 @@ document.addEventListener("turbolinks:load", () => {
   $('#food_recipes').on('cocoon:after-insert', function(e, insertedItem, originalEvent) {
     $("select.flexselect").flexselect();
   });
-  
+
+  document.querySelectorAll("input[type='submit']").forEach((input) => {
+    input.addEventListener("click", (ev) => {
+      let isValid = false
+      document.querySelectorAll(".valid-field").forEach((e) => {
+        if (e.value === "") {
+          e.classList.add("is-invalid")
+          isValid = true
+        } else {
+          e.classList.remove("is-invalid")
+        } 
+      })  
+      if(isValid) {
+        ev.stopPropagation();
+        ev.preventDefault();
+      }
+    })
+  })
 });

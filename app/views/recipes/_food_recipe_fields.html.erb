@@ -2,11 +2,13 @@
   <div class="form-row">
     <div class="field form-group col">
       <% f.label :food_id %>
-      <%= f.select(:food_id, @foods.pluck(:name, :id), {prompt: ""}, class: "flexselect form-control") %>
+      <%= f.select(:food_id, @foods.pluck(:name, :id), {prompt: ""}, class: "flexselect form-control valid-field" ) %>
+      <div class="invalid-feedback">選択して下さい</div>
     </div>
     <div class="field form-group col">
       <% f.label :amount %>
-      <%= f.text_field :amount, placeholder: "分量を入力", class: "form-control"%>
+      <%= f.text_field :amount, placeholder: "分量を入力", class: "form-control valid-field" %>
+      <div class="invalid-feedback">入力して下さい</div>
     </div>
     <%= link_to_remove_association "食材削除", f , {class:"form-group col"}%>
   </div>

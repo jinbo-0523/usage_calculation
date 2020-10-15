@@ -31,7 +31,6 @@ ja:
       food_recipe:
         food_id: 食材
         amount: 分量
-
       report:
         date: 日付
         sale: 売上
@@ -39,7 +38,6 @@ ja:
         shop_id: 店舗
       order:
         count: 注文数
-
     models:
       company: 会社
       rank: 職位
@@ -48,7 +46,6 @@ ja:
       shop: 店舗
       food: 食材
       recipe: 料理
-      food_recipe: 食材ー料理
-      
+      food_recipe: 料理用食材
       order: 注文
       report: 使用量計算報告

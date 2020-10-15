@@ -54,7 +54,7 @@ class ReportsController < ApplicationController
     @report = Report.find(params[:id])
     
     if @report.update(report_params)
-      redirect_to @report.shop, notice:"出数入力が完了しました"
+      redirect_to @report.shop, notice:"出数編集が完了しました"
     else
       @users = current_company.users.where(display: true).order(id: :asc)
       @brands = current_company.brands.where(display: true).order(id: :asc)
