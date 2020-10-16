@@ -1,3 +1,4 @@
+<%= render "layouts/error_messages", object: @report %>
 <% if action_name == 'new' %>
   <%= search_form_for @q, url: new_report_path do |f| %>
     <% f.label :id_eq %>
@@ -15,19 +16,22 @@
     <%# sale %>
     <div class="form__box__num formn-group col">
       <%= form.label :sale %>
-      <%= form.number_field	 :sale, class: "form-control", min: 0%>
+      <%= form.number_field	 :sale, class: "form-control valid-field", min: 0 %>
+      <div class="invalid-feedback">入力して下さい</div>
     </div>
   </div>
   <div class="form-row">
     <%# user %>
     <div class="form__box__user form-group col">
       <%= form.label :user_id %>
-      <%= form.select(:user_id, @users.pluck(:name, :id), {prompt: ""}, class: "flexselect form-control") %>
+      <%= form.select(:user_id, @users.pluck(:name, :id), {prompt: ""}, class: "flexselect form-control valid-field") %> 
+      <div class="invalid-feedback">入力して下さい</div>
     </div>
     <%# shop_id %>
     <div class="form__box__shop form-group col">
       <%= form.label :shop_id %>
-      <%= form.select(:shop_id, @brand_shops.pluck(:name, :id), {prompt: ""}, class: "flexselect form-control") %>
+      <%= form.select(:shop_id, @brand_shops.pluck(:name, :id), {prompt: ""}, class: "flexselect form-control valid-field") %> 
+      <div class="invalid-feedback">入力して下さい</div>
     </div>
   </div>
   <%# 子テーブルのorderに %>
