@@ -30,7 +30,7 @@ document.addEventListener("turbolinks:load", () => {
   document.querySelectorAll("input[type='submit']").forEach((input) => {
     input.addEventListener("click", (ev) => {
       let isValid = false
-      document.querySelectorAll(".valid-field").forEach((e) => {
+      input.closest('form').querySelectorAll(".valid-field").forEach((e) => {
         if (e.value === "") {
           e.classList.add("is-invalid")
           isValid = true
@@ -45,3 +45,24 @@ document.addEventListener("turbolinks:load", () => {
     })
   })
 });
+
+// 今クエリでinput[type='submit']を全取得してinputに１つずつ格納。それがクリックされたらevが動く
+// input[type='submit']から取り出したinputは
+// document.querySelectorAll("input[type='submit']").forEach((input) => {
+//   input.addEventListener("click", (ev) => {
+//     let isValid = false
+
+//     document.querySelectorAll(".valid-field").forEach((e) => {
+//       if (e.value === "") {
+//         e.classList.add("is-invalid")
+//         isValid = true
+//       } else {
+//         e.classList.remove("is-invalid")
+//       } 
+//     })  
+//     if(isValid) {
+//       ev.stopPropagation();
+//       ev.preventDefault();
+//     }
+//   })
+// })
