@@ -2,6 +2,10 @@
 <h1 class="text-center"><%= [@shop.number] %> <%=  @shop.brand[:name] %> <%= @shop.name %> </h1>
 <div>
   <h3>出数一覧</h3>
+
+    <div class="nav">
+      <%= paginate @reports %>
+    </div>
     <table class="orders__table table table-bordered table-striped mt-4">
       <thead class="orders__table__header table-primary">
         <tr class="orders__table__header__lists">
