@@ -47,7 +47,7 @@ class BrandsController < ApplicationController
   end
   
   def get_brands
-    @brands = current_company.brands.order(id: :asc)
+    @brands = current_company.brands.order(id: :asc).page(params[:page]).per(10)
   end
 
   def brand_params

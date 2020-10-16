@@ -54,7 +54,7 @@ class UsersController < ApplicationController
   end
   
   def get_users
-    @users = current_company.users.order(id: :asc).page(params[:page]).per(1)
+    @users = current_company.users.order(id: :asc).page(params[:page]).per(10)
   end
   
   def user_params

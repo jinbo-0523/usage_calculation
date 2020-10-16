@@ -1,5 +1,8 @@
 <div class ="index_aera"> 
   <h1 class="text-center">業態一覧</h1>
+  <div class="nav">
+    <%= paginate @brands %>
+  </div>
   <table class="table table-bordered table-striped mt-4">
     <thead class="table-primary">
       <tr>

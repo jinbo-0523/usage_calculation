@@ -20,6 +20,9 @@
       </tr>
     </thead>
     <tbody>
+    <div class="nav">
+      <%= paginate @search_shop %>
+    </div>
       <% @search_shop.each do |shop| %>
         <tr>
           <th scope="row" class="text-right"><%= shop.id %></th>

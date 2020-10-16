@@ -8,7 +8,7 @@ class ShopsController < ApplicationController
   def new
     @brands = current_company.brands.where(display: true).order(id: :asc)
     @q = current_company.shops.ransack(params[:q])
-    @search_shop = @q.result.order(id: :asc)
+    @search_shop = @q.result.order(id: :asc).page(params[:page]).per(30)
     @shop = current_company.shops.new
   end
   
@@ -71,7 +71,7 @@ class ShopsController < ApplicationController
   private
 
   def set_shop
-    @shop = current_company.shops.find(params[:id])
+    @shop = current_company.shops.find(params[:id]).page(params[:page]).per(10)
   end
   
   def get_shops

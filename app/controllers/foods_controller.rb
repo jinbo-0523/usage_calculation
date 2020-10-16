@@ -46,7 +46,7 @@ class FoodsController < ApplicationController
   end
   
   def get_foods
-    @foods = current_company.foods.order(id: :asc)
+    @foods = current_company.foods.order(id: :asc).page(params[:page]).per(30)
   end
   
   def food_params
