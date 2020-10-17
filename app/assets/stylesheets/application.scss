@@ -34,12 +34,28 @@ max-width: 576px;
   margin: 0 20px;
 }
 
-// エラー処理
-
-.field_with_errors {
-  display: contents;
-  input,
-  textarea {
-    @extend .is-invalid;
+.nav{
+  .pagination {
+    margin: auto;
+    span {
+      a {
+        display: inline-block;
+        padding: 0px 8px;
+        border: solid 3px ;
+        border-radius: 15px;
+      }
+    }
+    .page.current{
+      display: inline-block;
+      padding: 0px 8px;
+      border: solid 3px tomato;
+      background-color: tomato;
+      color: antiquewhite;
+      border-radius: 15px;
+      
+    }
   }
 }
+
+
+

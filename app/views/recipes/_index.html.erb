@@ -1,13 +1,16 @@
-
-
-
 <h1 class="text-center">レシピ一覧</h1>
+
 <%= search_form_for @q, url: new_recipe_path do |f| %>
   <%= f.search_field :name_cont, placeholder: "レシピ名を入力" %>
   <% f.label :brand_id_eq %>
   <%= f.collection_select :brand_id_eq, @brands, :id, :name, :include_blank => 'ブランド指定' %>
   <%= f.submit "検索"%>
 <% end %>
+
+<div class="nav">
+  <%= paginate @search_recipe %>
+</div>
+
 <table class="table table-bordered table-striped mt-4">
   <thead class="table-primary">
     <tr>
@@ -43,3 +46,7 @@
     <% end %>
   </tbody>
 </table>
+
+<div class="nav">
+  <%= paginate @search_recipe %>
+</div>

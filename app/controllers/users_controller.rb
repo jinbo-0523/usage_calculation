@@ -8,6 +8,8 @@ class UsersController < ApplicationController
   def new
     @user = current_company.users.new
     @ranks = current_company.ranks.order(id: :asc)
+    @q = current_company.users.ransack(params[:q])
+    @search_user = @q.result.order(id: :asc).page(params[:page]).per(20)
   end
   
   def create
@@ -29,7 +31,8 @@ class UsersController < ApplicationController
 
   def edit
     @ranks = current_company.ranks.order(id: :asc)
-    
+    @q = current_company.users.ransack(params[:q])
+    @search_user = @q.result.order(id: :asc).page(params[:page]).per(20)
   end
   
   def update
@@ -38,6 +41,8 @@ class UsersController < ApplicationController
     else
       flash.now[:alert] = "編集に失敗しました"
       @ranks = current_company.ranks.order(id: :asc)
+      @q = current_company.users.ransack(params[:q])
+      @search_user = @q.result.order(id: :asc).page(params[:page]).per(20)
       render :edit
     end
   end
@@ -54,7 +59,7 @@ class UsersController < ApplicationController
   end
   
   def get_users
-    @users = current_company.users.order(id: :asc)
+    @users = current_company.users.order(id: :asc).page(params[:page]).per(10)
   end
   
   def user_params

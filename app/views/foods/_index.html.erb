@@ -1,4 +1,12 @@
 <h1 class="text-center">食材一覧</h1>
+<%= search_form_for @q, url: new_brand_path do |f| %>
+  <%= f.search_field :name_cont, placeholder: "業態名を入力" %>
+  <%= f.submit "検索"%>
+<% end %>
+
+<div class="nav">
+  <%= paginate @search_food %>
+</div>
 
 <table class="table table-bordered table-striped mt-4">
   <thead>
@@ -12,7 +20,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @foods.each do |food| %>
+    <% @search_food.each do |food| %>
       <tr>
         <th scope="row" class="text-right"><%= food.id %></th>
         <td class="break-word"><%= food.name %></td>
@@ -37,3 +45,7 @@
     <% end %>
   </tbody>
 </table>
+
+<div class="nav">
+  <%= paginate @search_food %>
+</div>

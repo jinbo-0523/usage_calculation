@@ -7,6 +7,8 @@ class BrandsController < ApplicationController
   end  
   def new
     @brand = current_company.brands.new
+    @q = current_company.brands.ransack(params[:q])
+    @search_brand = @q.result.order(id: :asc).page(params[:page]).per(20)
   end
   
   def create
@@ -15,6 +17,8 @@ class BrandsController < ApplicationController
       redirect_to new_brand_path, notice: "新しく業態を作成しました"
     else
       flash.now[:alert] = "作成に失敗しました"
+      @q = current_company.brands.ransack(params[:q])
+      @search_brand = @q.result.order(id: :asc).page(params[:page]).per(20)
       render :new
     end
   end
@@ -24,6 +28,8 @@ class BrandsController < ApplicationController
   end
   
   def edit
+    @q = current_company.brands.ransack(params[:q])
+    @search_brand = @q.result.order(id: :asc).page(params[:page]).per(20)
   end
   
   def update
@@ -31,6 +37,8 @@ class BrandsController < ApplicationController
       redirect_to new_brand_path, notice:"業態を編集しました"
     else
       flash.now[:alert] = "編集に失敗しました"
+      @q = current_company.brands.ransack(params[:q])
+      @search_brand = @q.result.order(id: :asc).page(params[:page]).per(20)
       render :edit
     end
   end

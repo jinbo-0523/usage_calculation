@@ -17,6 +17,9 @@
       <%= f.collection_select :brand_id_eq, @brands, :id, :name, :include_blank => 'ブランド指定' %>
       <%= f.submit "検索" %>
     <% end %>
+  <div class="nav">
+    <%= paginate @search_shop %>
+  </div>
   <table class="table table-bordered table-striped mt-4">
     <thead class="table-primary">
       <tr>
@@ -45,4 +48,7 @@
       <% end %>
     </tbody>
   </table>
+  <div class="nav">
+    <%= paginate @search_shop %>
+  </div>
 </div>

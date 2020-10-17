@@ -49,3 +49,10 @@ ja:
       food_recipe: 料理用食材
       order: 注文
       report: 使用量計算報告
+  views:
+    pagination:
+      first: "&laquo;"
+      last: "&raquo;"
+      previous: "&lsaquo;"
+      next: "&rsaquo;"
+      truncate: ".."
