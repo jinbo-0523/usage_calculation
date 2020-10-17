@@ -47,7 +47,7 @@ class RanksController < ApplicationController
   end
   
   def get_ranks
-    @ranks = current_company.ranks.order(id: :asc)
+    @ranks = current_company.ranks.order(id: :asc).page(params[:page]).per(10)
   end
   
   def rank_params

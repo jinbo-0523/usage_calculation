@@ -2,77 +2,92 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-thead, tbody {
-  display: block;
-}
-tbody {
-  overflow-y: hidden;
-  overflow-x: scroll;
-}
+// thead, tbody {
+//   display: block;
+// }
+// tbody {
+//   overflow-y: hidden;
+//   overflow-x: scroll;
+// }
 
-
-.orders__table {
-  overflow-x : auto ;
-  &__header {
-    display: flex;
-    float: left;
-    border-bottom: 0px solid #7abaff;
-    &__lists {
+.table-area {
+  .orders__table {
+    border: none;
+    &__header {
+      display: block;
       display: flex;
-      flex-direction: column;
-      .list {
-        border-bottom-width: 1px;
+      float: left;
+      border-bottom: 0px solid #7abaff;
+      &__lists {
+        display: flex;
+        flex-direction: column;
+        .list {
+          border-bottom-width: 1px;
+          position: sticky;
+          left: 0;
+          padding: 5px 0px;
+        }
+      }
+    }
+    
+    &__body{
+      overflow-y: hidden;
+      overflow-x: scroll;
+      display: block;
+      display: flex;
+      width: auto;
+      &__lists {
+        display: flex;
+        flex-direction: column;
+        .orders__table__td {
+          width: 118px;
+          padding: 5px 0px;
+        }
+        .orders__table__td:hover{
+          background-color: burlywood;
+        }
+      }
+    }
+
+  }
+
+  .reports__table {
+    border: none;
+    &__header {
+      display: block;
+      display: flex;
+      float: left;
+      border-bottom: 1px solid #7abaff;
+      &__lists {
+        display: flex;
+        flex-direction: column;
+        .list {
+          border-bottom-width: 1px;
+          padding: 5px 0px;
+          
+        }
         
       }
-      
     }
-  }
-  
-  &__body{
-    display: flex;
-    width: auto;
-    &__lists {
+    
+    &__body{
+      overflow-y: hidden;
+      overflow-x: scroll;
+      display: block;
       display: flex;
-      flex-direction: column;
-      .orders__table__td {
-        width: 120px;
+      width: auto;
+      &__lists {
+        display: flex;
+        flex-direction: column;
+        .reports__table__td {
+          width: 118px;
+          padding: 5px 0px;
+          
+        }
       }
     }
   }
-
 }
-
-.reports__table {
-  overflow-x : auto ;
-  &__header {
-    display: flex;
-    float: left;
-    border-bottom: 1px solid #7abaff;
-    &__lists {
-      display: flex;
-      flex-direction: column;
-      .list {
-        border-bottom-width: 1px;
-        
-      }
-      
-    }
-  }
-  
-  &__body{
-    display: flex;
-    width: auto;
-    &__lists {
-      display: flex;
-      flex-direction: column;
-      .reports__table__td {
-        width: 120px;
-      }
-    }
-  }
-
-}
-
 .form__box__date {
   line-height: normal;
   // display: flex;

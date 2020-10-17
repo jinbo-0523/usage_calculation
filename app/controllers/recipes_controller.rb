@@ -71,7 +71,7 @@ class RecipesController < ApplicationController
   end
   
   def get_recipes
-    @recipes = current_company.recipes.order(id: :asc)
+    @recipes = current_company.recipes.order(id: :asc).page(params[:page]).per(20)
   end
   
   def recipe_params
