@@ -6,6 +6,8 @@ class FoodsController < ApplicationController
   end
   def new
     @food = current_company.foods.new
+    @q = current_company.foods.ransack(params[:q])
+    @search_food = @q.result.order(id: :asc).page(params[:page]).per(30)
   end
   
   def create
@@ -14,6 +16,8 @@ class FoodsController < ApplicationController
       redirect_to new_food_path, notice: "食材を作成しました"
     else
       flash.now[:alert] = "作成に失敗しました"
+      @q = current_company.foods.ransack(params[:q])
+      @search_food = @q.result.order(id: :asc).page(params[:page]).per(30)
       render :new
     end
   end
@@ -23,6 +27,8 @@ class FoodsController < ApplicationController
   end
 
   def edit
+    @q = current_company.foods.ransack(params[:q])
+    @search_food = @q.result.order(id: :asc).page(params[:page]).per(30)
   end
   
   def update
@@ -30,6 +36,8 @@ class FoodsController < ApplicationController
       redirect_to new_food_path, notice:"食材を編集しました"
     else
       flash.now[:alert] = "編集に失敗しました"
+      @q = current_company.foods.ransack(params[:q])
+      @search_food = @q.result.order(id: :asc).page(params[:page]).per(30)
       render :edit
     end
   end

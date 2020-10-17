@@ -7,6 +7,9 @@ class RanksController < ApplicationController
   
   def new
     @rank = current_company.ranks.new
+    @q = current_company.ranks.ransack(params[:q])
+    @search_rank = @q.result.order(id: :asc).page(params[:page]).per(10)
+    
   end
   
   def create
@@ -15,6 +18,8 @@ class RanksController < ApplicationController
       redirect_to new_rank_path, notice: "新しく職位を作成しました"
     else
       flash.now[:alert] = "作成に失敗しました"
+      @q = current_company.ranks.ransack(params[:q])
+      @search_rank = @q.result.order(id: :asc).page(params[:page]).per(10)
       render :new
     end
   end
@@ -24,6 +29,8 @@ class RanksController < ApplicationController
   end
 
   def edit
+    @q = current_company.ranks.ransack(params[:q])
+    @search_rank = @q.result.order(id: :asc).page(params[:page]).per(10)
   end
   
   def update
@@ -31,6 +38,8 @@ class RanksController < ApplicationController
       redirect_to new_rank_path, notice:"職位を編集しました"
     else
       flash.now[:alert] = "編集に失敗しました"
+      @q = current_company.ranks.ransack(params[:q])
+      @search_rank = @q.result.order(id: :asc).page(params[:page]).per(10)
       render :edit
     end
   end

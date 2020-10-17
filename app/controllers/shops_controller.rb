@@ -20,9 +20,9 @@ class ShopsController < ApplicationController
       redirect_to new_shop_path, notice: "新しく店舗を作成しました"
     else
       flash.now[:alert] = "作成に失敗しました"
-      @q = current_company.shops.ransack(params[:q])
-      @search_shop = @q.result.order(id: :asc)
       @brands = current_company.brands.where(display: true).order(id: :asc)
+      @q = current_company.shops.ransack(params[:q])
+      @search_shop = @q.result.order(id: :asc).page(params[:page]).per(30)
       render :new
     end
   end
@@ -50,7 +50,7 @@ class ShopsController < ApplicationController
   def edit
     @brands = current_company.brands.where(display: true).order(id: :asc)
     @q = current_company.shops.ransack(params[:q])
-    @search_shop = @q.result.order(id: :asc)
+    @search_shop = @q.result.order(id: :asc).page(params[:page]).per(30)
     
   end
   def update
@@ -59,6 +59,8 @@ class ShopsController < ApplicationController
     else
       flash.now[:alert] = "編集に失敗しました"
       @brands = current_company.brands.where(display: true).order(id: :asc)
+      @q = current_company.shops.ransack(params[:q])
+      @search_shop = @q.result.order(id: :asc).page(params[:page]).per(30)
       render :edit
     end
   end
@@ -71,7 +73,7 @@ class ShopsController < ApplicationController
   private
 
   def set_shop
-    @shop = current_company.shops.find(params[:id]).page(params[:page]).per(10)
+    @shop = current_company.shops.find(params[:id])
   end
   
   def get_shops

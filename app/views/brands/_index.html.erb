@@ -1,8 +1,14 @@
 <div class ="index_aera"> 
   <h1 class="text-center">業態一覧</h1>
+  <%= search_form_for @q, url: new_brand_path do |f| %>
+    <%= f.search_field :name_cont, placeholder: "業態名を入力" %>
+    <%= f.submit "検索"%>
+  <% end %>
+
   <div class="nav">
-    <%= paginate @brands %>
+    <%= paginate @search_brand %>
   </div>
+  
   <table class="table table-bordered table-striped mt-4">
     <thead class="table-primary">
       <tr>
@@ -13,7 +19,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @brands.each do |brand| %>
+      <% @search_brand.each do |brand| %>
         <tr>
           <th scope="row" class="text-right"><%= brand.id %></th>
           <td class="break-word"><%= brand.name %></td>
@@ -36,4 +42,7 @@
       <% end %>
     </tbody>
   </table>
+  <div class="nav">
+    <%= paginate @search_brand %>
+  </div>
 </div>

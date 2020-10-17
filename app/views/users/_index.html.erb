@@ -1,6 +1,12 @@
 <h1 class="text-center">ユーザー一覧</h1>
+    <%= search_form_for @q, url: new_user_path do |f| %>
+      <%= f.search_field :name_cont, placeholder: "ユーザー名を入力" %>
+      <% f.label :rank_id_eq %>
+      <%= f.collection_select :rank_id_eq, @ranks, :id, :name, :include_blank => '職位指定' %>
+      <%= f.submit "検索" %>
+    <% end %>
 <div class="nav">
-  <%= paginate @users %>
+  <%= paginate @search_user %>
 </div>
 <table class="table table-bordered table-striped mt-4">
   <thead class="table-primary">
@@ -14,7 +20,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @users.each do |user| %>
+    <% @search_user.each do |user| %>
       <tr>
         <th scope="row" class="text-right"><%= user.id %></th>
         <td class="break-word"><%= user.employee_id %></td>

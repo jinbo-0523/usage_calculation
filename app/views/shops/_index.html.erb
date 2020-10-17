@@ -1,12 +1,16 @@
 <div class= "index_area">
   <h1 class="text-center">店舗一覧</h1>
-    <%= search_form_for @q, url: new_shop_path do |f| %>
-      <%= f.search_field :name_cont, placeholder: "店舗名を入力" %>
-      <% f.label :brand_id_eq %>
-      <%= f.collection_select :brand_id_eq, @brands, :id, :name, :include_blank => 'ブランド指定' %>
-      <%= f.submit "検索" %>
-    <% end %>
 
+  <%= search_form_for @q, url: new_shop_path do |f| %>
+    <%= f.search_field :name_cont, placeholder: "店舗名を入力" %>
+    <% f.label :brand_id_eq %>
+    <%= f.collection_select :brand_id_eq, @brands, :id, :name, :include_blank => 'ブランド指定' %>
+    <%= f.submit "検索" %>
+  <% end %>
+
+  <div class="nav">
+    <%= paginate @search_shop %>
+  </div>
 
   <table class="table table-bordered table-striped mt-4">
     <thead class="table-primary">
@@ -20,9 +24,6 @@
       </tr>
     </thead>
     <tbody>
-    <div class="nav">
-      <%= paginate @search_shop %>
-    </div>
       <% @search_shop.each do |shop| %>
         <tr>
           <th scope="row" class="text-right"><%= shop.id %></th>
@@ -48,4 +49,8 @@
       <% end %>
     </tbody>
   </table>
+
+  <div class="nav">
+    <%= paginate @search_shop %>
+  </div>
 </div>

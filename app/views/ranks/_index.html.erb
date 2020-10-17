@@ -1,4 +1,13 @@
 <h1 class="text-center">職位一覧</h1>
+<%= search_form_for @q, url: new_rank_path do |f| %>
+  <%= f.search_field :name_cont, placeholder: "職位名を入力" %>
+  <%= f.submit "検索"%>
+<% end %>
+
+<div class="nav">
+  <%= paginate @search_rank %>
+</div>
+
 <table class="table table-bordered table-striped mt-4">
   <thead class="table-primary">
     <tr>
@@ -9,7 +18,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @ranks.each do |rank| %>
+    <% @search_rank.each do |rank| %>
       <tr>
         <th scope="row" class="text-right"><%= rank.id %></th>
         <td class="break-word"><%= rank.name %></td>
@@ -32,3 +41,7 @@
     <% end %>
   </tbody>
 </table>
+
+<div class="nav">
+  <%= paginate @search_rank %>
+</div>
