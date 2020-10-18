@@ -34,7 +34,9 @@ max-width: 576px;
   margin: 0 20px;
 }
 
-.nav{
+.page{
+  display: flex;
+  justify-content: center;
   .pagination {
     margin: auto;
     span {
@@ -59,3 +61,124 @@ max-width: 576px;
 
 
 
+.header {
+  padding: 0px;
+  &__menu {
+    background-color: #7abaff;
+    width: 100%;
+    border-radius: 5px;
+    border: 0.5px gainsboro groove;
+    color: #ffffff;
+    &__ul {
+      text-align: center;
+      margin: 0px;
+      padding: 0px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 18px;
+      
+      svg {
+        font-size: 20px;
+        margin: auto;
+        margin-right: 2px;
+
+      }
+      &__home{
+        display: inline-block;
+        width: 25%;
+        text-decoration: none;
+        border-radius: 5px;
+        text-decoration: none;
+        color: #ffffff;
+        transition: 0.1s ;
+      }
+        &__home:hover {
+          color: #ffffff; background: dodgerblue;
+        }
+        
+      &__rank{
+        display: inline-block;
+        width: 25%;
+        border-radius: 5px;
+        text-decoration: none;
+        color: #ffffff;
+        transition: 0.1s ;
+      }
+      &__rank:hover {
+        color: #ffffff; background: dodgerblue;
+      }
+
+      &__user{
+        display: inline-block;
+        width: 25%;
+        border-radius: 5px;
+        text-decoration: none;
+        color: #ffffff;
+        transition: 0.1s ;
+      }
+      &__user:hover {
+        color: #ffffff; background: dodgerblue;
+      }
+
+      &__brand{
+        display: inline-block;
+        width: 25%;
+        border-radius: 5px;
+        text-decoration: none;
+        color: #ffffff;
+        transition: 0.1s ;
+      }
+      &__brand:hover {
+        color: #ffffff; background: dodgerblue;
+      }
+
+      &__shop{
+        display: inline-block;
+        width: 25%;
+        border-radius: 5px;
+        text-decoration: none;
+        color: #ffffff;
+        transition: 0.1s ;
+      }
+      &__shop:hover {
+        color: #ffffff; background: dodgerblue;
+      }
+
+      &__food{
+        display: inline-block;
+        width: 25%;
+        border-radius: 5px;
+        text-decoration: none;
+        color: #ffffff;
+        transition: 0.1s ;
+      }
+      &__food:hover {
+        color: #ffffff; background: dodgerblue;
+      }
+
+      &__recipe{
+        display: inline-block;
+        width: 25%;
+        border-radius: 5px;
+        text-decoration: none;
+        color: #ffffff;
+        transition: 0.1s ;
+      }
+      &__recipe:hover {
+        color: #ffffff; background: dodgerblue;
+
+      }
+      &__report{
+        display: inline-block;
+        width: 25%;
+        border-radius: 5px;
+        text-decoration: none;
+        color: #ffffff;
+        transition: 0.1s ;
+      }
+      &__report:hover {
+        color: #ffffff; background: dodgerblue;
+      }
+    }
+  }
+}
