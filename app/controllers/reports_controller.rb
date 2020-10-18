@@ -48,6 +48,18 @@ class ReportsController < ApplicationController
     @search_brands = current_company.brands.ransack(q).result
     @brand_shops = Shop.where(brand_id: @search_brands.ids).where(display: true).order(id: :asc)
     @brand_recipes = Recipe.where(brand_id: @search_brands.ids).where(display: true).order(id: :asc)
+    # 送られてきた@reportの中のrecipe_idを先に取り出す
+    order_recipe_ids = @report.orders.pluck(:recipe_id)
+    @orders = []
+    @brand_recipes.each do |recipe|
+      if order_recipe_ids.include?(recipe.id)
+        @orders << @report.orders.find_by(recipe_id: recipe.id)
+        # order_recipe_idsと同じidが含まれていたら、取り出し
+      else
+        @orders << @report.orders.build(recipe_id: recipe.id)
+        # なければbuildして新しく作る
+      end
+    end
   end
 
   def update
@@ -70,6 +82,9 @@ class ReportsController < ApplicationController
 
   private
   def report_params
-    params.require(:report).permit(:date, :sale, :user_id, :shop_id, orders_attributes:[:id, :count, :recipe_id, :report_id])
+    params[:report][:orders_attributes].each do |param|
+      param.last[:_destroy] = 1 if param.last[:count] == "0"
+    end
+    params.require(:report).permit(:date, :sale, :user_id, :shop_id, orders_attributes:[:id, :count, :recipe_id, :report_id, :_destroy])
   end
 end

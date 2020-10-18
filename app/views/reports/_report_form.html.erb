@@ -35,7 +35,7 @@
     </div>
   </div>
   <%# 子テーブルのorderに %>
-    <%= form.fields_for :orders do |f| %>
+    <%= form.fields_for :orders, @orders do |f| %>
       <div class="form-group">
         <%= f.hidden_field :recipe_id, value: f.object.recipe_id %>
         <%# [f.index]とすることでコントローラーの記述減。配列で取れているのでindexが使える %>
