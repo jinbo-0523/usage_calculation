@@ -9,8 +9,8 @@ class ReportsController < ApplicationController
     @recipes = current_company.recipes.where(display: true).order(id: :asc)
     @q = current_company.brands.ransack(params[:q])
     @search_brands = @q.result
-    @brand_shops = Shop.where(brand_id: @search_brands.ids).order(id: :asc)
-    @brand_recipes = Recipe.where(brand_id: @search_brands.ids).order(id: :asc)
+    @brand_shops = Shop.where(brand_id: @search_brands.ids).where(display: true).order(id: :asc)
+    @brand_recipes = Recipe.where(brand_id: @search_brands.ids).where(display: true).order(id: :asc)
     @report = Report.new
     @brand_recipes.each do |recipe|
       @report.orders.build(recipe_id: recipe.id)
@@ -27,8 +27,8 @@ class ReportsController < ApplicationController
       @recipes = current_company.recipes.where(display: true).order(id: :asc)
       @q = current_company.brands.ransack(params[:q])
       @search_brands = @q.result
-      @brand_shops = Shop.where(brand_id: @search_brands.ids).order(id: :asc)
-      @brand_recipes = Recipe.where(brand_id: @search_brands.ids).order(id: :asc)
+      @brand_shops = Shop.where(brand_id: @search_brands.ids).where(display: true).order(id: :asc)
+      @brand_recipes = Recipe.where(brand_id: @search_brands.ids).where(display: true).order(id: :asc)
       flash.now[:alert] = "作成に失敗しました"
       render :new
     end
@@ -46,8 +46,8 @@ class ReportsController < ApplicationController
     @report = Report.find(params[:id])
     q = { id_eq: @report.shop.brand.id }
     @search_brands = current_company.brands.ransack(q).result
-    @brand_shops = Shop.where(brand_id: @search_brands.ids).order(id: :asc)
-    @brand_recipes = Recipe.where(brand_id: @search_brands.ids).order(id: :asc)
+    @brand_shops = Shop.where(brand_id: @search_brands.ids).where(display: true).order(id: :asc)
+    @brand_recipes = Recipe.where(brand_id: @search_brands.ids).where(display: true).order(id: :asc)
   end
 
   def update
@@ -61,8 +61,8 @@ class ReportsController < ApplicationController
       @recipes = current_company.recipes.where(display: true).order(id: :asc)
       @q = current_company.brands.ransack(params[:q])
       @search_brands = @q.result
-      @brand_shops = Shop.where(brand_id: @search_brands.ids).order(id: :asc)
-      @brand_recipes = Recipe.where(brand_id: @search_brands.ids).order(id: :asc)
+      @brand_shops = Shop.where(brand_id: @search_brands.ids).where(display: true).order(id: :asc)
+      @brand_recipes = Recipe.where(brand_id: @search_brands.ids).where(display: true).order(id: :asc)
       flash.now[:alert] = "編集に失敗しました"
       render :edit
     end
