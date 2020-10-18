@@ -1,0 +1,33 @@
+  <nav class="header">
+    <div class="header__menu">
+      <div class="header__menu__lists navbar">
+        <div class="text-nowrap">
+          <%= link_to companies_path, class: "header__menu__lists__top" do %>
+            <i class="fas fa-home"><i class="fas fa-house-user"></i></i><span class="d-none d-sm-inline">トップ</span>
+          <% end %>
+          <%= link_to new_rank_path, class: "header__menu__lists__rank" do %>
+            <i class="fas fa-crown"></i><span class="d-none d-sm-inline">職位設定</span>
+          <% end %>
+          <%= link_to new_user_path , class: "header__menu__lists__user" do %>
+            <i class="fas fa-user"></i><span class="d-none d-sm-inline">ユーザー設定</span>
+          <% end %>
+          <%= link_to new_brand_path, class: "header__menu__lists__brand" do %>
+            <i class="fas fa-coffee"></i><span class="d-none d-sm-inline">業態設定</span>
+          <% end %>
+          <br>
+          <%= link_to new_shop_path, class: "header__menu__lists__shop" do %>
+            <i class="fas fa-store-alt"></i><span class="d-none d-sm-inline">店舗設定</span>
+          <% end %>
+          <%= link_to new_food_path , class: "header__menu__lists__food" do %>
+            <i class="fas fa-fish"></i></i><span class="d-none d-sm-inline">食材設定</span>
+          <% end %>
+          <%= link_to new_recipe_path , class: "header__menu__lists__recipe" do %>
+            <i class="fas fa-utensils"></i><span class="d-none d-sm-inline">料理設定</span>
+          <% end %>
+          <%= link_to new_report_path , class: "header__menu__lists__report" do %>
+            <i class="fas fa-comments-dollar"></i><span class="d-none d-sm-inline">オーダー入力</span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </nav>
