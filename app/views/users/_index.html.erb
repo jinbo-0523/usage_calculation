@@ -5,7 +5,7 @@
       <%= f.collection_select :rank_id_eq, @ranks, :id, :name, :include_blank => '職位指定' %>
       <%= f.submit "検索" %>
     <% end %>
-<div class="nav">
+<div class="page">
   <%= paginate @search_user %>
 </div>
 <table class="table table-bordered table-striped mt-4">

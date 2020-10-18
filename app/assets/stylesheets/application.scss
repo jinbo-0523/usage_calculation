@@ -59,3 +59,63 @@ max-width: 576px;
 
 
 
+.header {
+  padding: 0px;
+  &__menu {
+    background-color: #7abaff;
+    width: 100%;
+    border-radius: 5px;
+    border: 0.5px gainsboro groove;
+    color: #ffffff;
+    &__ul {
+      text-align: center;
+      margin: 0px;
+      padding: 0px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 18px;
+      a {
+        border-radius: 5px;
+        text-decoration: none;
+        color: #ffffff;
+        transition: 0.1s ;
+      }
+      a:hover {
+        color: #ffffff; background: dodgerblue;
+      }
+      &__home{
+        display: inline-block;
+        width: 25%;
+        text-decoration: none;
+      }
+      &__rank{
+        display: inline-block;
+        width: 25%;
+      }
+      &__user{
+        display: inline-block;
+        width: 25%;
+      }
+      &__brand{
+        display: inline-block;
+        width: 25%;
+      }
+      &__shop{
+        display: inline-block;
+        width: 25%;
+      }
+      &__food{
+        display: inline-block;
+        width: 25%;
+      }
+      &__recipe{
+        display: inline-block;
+        width: 25%;
+      }
+      &__report{
+        display: inline-block;
+        width: 25%;
+      }
+    }
+  }
+}

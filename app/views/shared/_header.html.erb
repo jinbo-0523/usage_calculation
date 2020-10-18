@@ -1,6 +1,5 @@
 <header>
   <nav class="navbar navbar-expand navbar-light">
-    <%= link_to "トップ", root_path, class: 'navbar-brand' %>
     <% if company_signed_in?%>
       <div>会社名： <%= current_company.name %> </div>
     <% end %>
