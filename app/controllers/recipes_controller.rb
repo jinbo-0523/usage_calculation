@@ -13,7 +13,7 @@ class RecipesController < ApplicationController
     @q = current_company.recipes.ransack(params[:q])
     @search_recipe = @q.result.order(id: :asc).page(params[:page]).per(20)
     
-    @foods = current_company.foods.order(id: :asc)
+    @foods = current_company.foods.where(display: true).order(id: :asc)
     @recipe = current_company.recipes.new
     @recipe.food_recipes.build
   end
@@ -33,7 +33,7 @@ class RecipesController < ApplicationController
       @brands = current_company.brands.where(display: true).order(id: :asc)
       @q = current_company.recipes.ransack(params[:q])
       @search_recipe = @q.result.order(id: :asc).page(params[:page]).per(20)  
-      @foods = current_company.foods.order(id: :asc)
+      @foods = current_company.foods.where(display: true).order(id: :asc)
       render :new
     end
   end
