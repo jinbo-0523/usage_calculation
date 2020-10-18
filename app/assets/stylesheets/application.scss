@@ -83,6 +83,12 @@ max-width: 576px;
       a:hover {
         color: #ffffff; background: dodgerblue;
       }
+      svg {
+        font-size: 20px;
+        margin: auto;
+        margin-right: 2px;
+
+      }
       &__home{
         display: inline-block;
         width: 25%;
