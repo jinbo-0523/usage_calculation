@@ -16,6 +16,7 @@ class ShopsController < ApplicationController
     # 他の会社の brand_id になっている場合は例外を出す
     current_company.brands.find(params[:shop][:brand_id])
     @shop = Shop.new(shop_params)
+    
     if @shop.save
       redirect_to new_shop_path, notice: "新しく店舗を作成しました"
     else
