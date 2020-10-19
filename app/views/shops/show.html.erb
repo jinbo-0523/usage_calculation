@@ -1,7 +1,6 @@
-<%= link_to "出数登録・計算をする", new_report_path %>
-<h1 class="text-center"><%= [@shop.number] %> <%=  @shop.brand[:name] %> <%= @shop.name %> </h1>
+<h2 class="text-center"><%= [@shop.number] %> <%=  @shop.brand[:name] %> <%= @shop.name %> </h2>
 <div>
-  <h3>出数一覧</h3>
+  <h3 class="text-center">出数一覧</h3>
   <div class="page">
     <%= paginate @reports %>
   </div>
