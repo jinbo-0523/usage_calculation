@@ -1,26 +1,61 @@
-<header>
-  <nav class="navbar navbar-expand navbar-light">
-    <% if company_signed_in?%>
-      <div>会社名： <%= current_company.name %> </div>
-    <% end %>
-    <div id="Navber">
-      <ul class="navbar-nav">
-        <% if company_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to 'アカウント編集', edit_company_registration_path, class: 'nav-link' %>
-          </li>
-          <li class="nav-item active">
-            <%= link_to 'ログアウト', destroy_company_session_path, method: :delete, class: 'nav-link' %>
-          </li>
+<div class="title">食材使用量計算アプリ</div>
+<nav class="header__top navbar navbar-expand navbar-light">
+  <% if company_signed_in?%>
+    <div class=company__name >会社名： <%= current_company.name %> </div>
+  <% end %>
+  <div id="Navber">
+    <ul class="navbar-nav">
+      <% if company_signed_in? %>
+        <li class="nav-item active">
+          <%= link_to 'アカウント', edit_company_registration_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item active">
+          <%= link_to 'ログアウト', destroy_company_session_path, method: :delete, class: 'nav-link' %>
+        </li>
       <% else %>
-          <li class="nav-item active">
-            <%= link_to "新規登録", new_company_registration_path, class: 'nav-link' %>
-          </li>
-          <li class="nav-item active">
-            <%= link_to "ログイン", new_company_session_path, class: 'nav-link' %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
+        <li class="nav-item active">
+          <%= link_to "新規登録", new_company_registration_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item active">
+          <%= link_to "ログイン", new_company_session_path, class: 'nav-link' %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
+
+<% if company_signed_in?%>
+  <nav class="header__bottom navbar">
+  <div class="header__menu">
+    <ul class="header__menu__ul text-nowrap">
+      <%= link_to companies_path, class: "header__menu__ul__home" do %>
+        <i class="fas fa-home"></i>店舗<span class="d-none d-sm-inline">一覧</span>
+      <% end %>
+      <%= link_to new_rank_path, class: "header__menu__ul__rank" do %>
+        <i class="fas fa-crown"></i>職位<span class="d-none d-sm-inline">設定</span>
+      <% end %>
+      <%= link_to new_user_path , class: "header__menu__ul__user" do %>
+        <i class="fas fa-user"></i>ユーザー<span class="d-none d-sm-inline">設定</span>
+      <% end %>
+      <%= link_to new_shop_path, class: "header__menu__ul__shop" do %>
+        <i class="fas fa-store-alt"></i>店舗<span class="d-none d-sm-inline">設定</span>
+      <% end %>
+    </ul>
+      
+    <ul class="header__menu__ul text-nowrap">
+      <%= link_to new_report_path , class: "header__menu__ul__report" do %>
+        <i class="fas fa-comments-dollar"></i>出数<span class="d-none d-sm-inline">入力</span>
+      <% end %>
+      <%= link_to new_food_path , class: "header__menu__ul__food" do %>
+        <i class="fas fa-fish"></i></i>食材<span class="d-none d-sm-inline">設定</span>
+      <% end %>
+      <%= link_to new_recipe_path , class: "header__menu__ul__recipe" do %>
+        <i class="fas fa-utensils"></i>レシピ<span class="d-none d-sm-inline">設定</span>
+      <% end %>
+      <%= link_to new_brand_path, class: "header__menu__ul__brand" do %>
+        <i class="fas fa-coffee"></i>業態<span class="d-none d-sm-inline">設定</span>
+      <% end %>
+    </ul>
+  </div>
   </nav>
-</header>
+<% end %>

@@ -1,5 +1,5 @@
 <div class= "index_area">
-  <h1 class="text-center">店舗一覧</h1>
+  <h3 class="text-center">店舗一覧</h3>
 
   <%= search_form_for @q, url: new_shop_path do |f| %>
     <%= f.search_field :name_cont, placeholder: "店舗名を入力" %>
@@ -37,7 +37,7 @@
             <i class="far fa-eye-slash"></i>表示しない
           <% end %>
           </td>
-          <td class="text-nowrap">
+          <td>
             <%= link_to  edit_shop_path(shop), class: "btn btn-success" do %>
               <i class="far fa-edit"></i><span class="d-none d-md-inline"> 編集</span>
             <% end %>

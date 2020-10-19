@@ -1,4 +1,4 @@
-<h1 class="text-center">ユーザー一覧</h1>
+<h3 class="text-center">ユーザー一覧</h3>
     <%= search_form_for @q, url: new_user_path do |f| %>
       <%= f.search_field :name_cont, placeholder: "ユーザー名を入力" %>
       <% f.label :rank_id_eq %>
@@ -33,7 +33,7 @@
           <i class="far fa-eye-slash"></i>表示しない
         <% end %>
         </td>
-        <td class="text-nowrap">
+        <td>
           <%= link_to  edit_user_path(user), class: "btn btn-success" do %>
             <i class="far fa-edit"></i><span class="d-none d-md-inline"> 編集</span>
           <% end %>

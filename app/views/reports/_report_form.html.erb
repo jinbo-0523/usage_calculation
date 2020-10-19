@@ -34,6 +34,7 @@
       <div class="invalid-feedback">入力して下さい</div>
     </div>
   </div>
+<% if params[:q].present? %>
   <%# 子テーブルのorderに %>
     <%= form.fields_for :orders, @orders do |f| %>
       <div class="form-group">
@@ -49,4 +50,5 @@
   <div>
     <%= form.submit button_value, class: "btn btn-success btn-block" %>
   </div>
+<% end %>
 <% end %>

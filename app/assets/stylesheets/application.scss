@@ -81,8 +81,11 @@ max-width: 576px;
         font-size: 20px;
         margin: auto;
         margin-right: 2px;
-
       }
+      a {
+        text-decoration: none;
+      }
+      
       &__home{
         display: inline-block;
         width: 25%;
@@ -181,4 +184,29 @@ max-width: 576px;
       }
     }
   }
+}
+.title{
+    font-size: 20px;
+    font-weight: bolder;
+  }
+header {
+  background-color: #ffffff;
+  
+  .header__top{
+    margin-left: auto;
+  }
+  .navbar {
+    padding: 0px;
+  }
+}
+body {
+  padding-top: 150px;
+}
+.fa-w-14 {
+  font-size: 20px;
+  padding-right: 4px;
+}
+
+.nav-item{
+  text-align: right;
 }
