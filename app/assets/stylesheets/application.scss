@@ -81,8 +81,11 @@ max-width: 576px;
         font-size: 20px;
         margin: auto;
         margin-right: 2px;
-
       }
+      a {
+        text-decoration: none;
+      }
+      
       &__home{
         display: inline-block;
         width: 25%;
@@ -185,13 +188,6 @@ max-width: 576px;
 header {
   background-color: #ffffff;
 }
-.header__top {
-  background-color: dodgerblue;
-}
-
-.header__bottom {
-
-}
 body {
   padding-top: 145px;
 }
@@ -199,3 +195,13 @@ body {
   font-size: 20px;
   padding-right: 4px;
 }
+
+// .cocoon_deleate {
+//   // background-color: red;
+//   color: #495057;;
+//   display: block;
+//   text-align: center;
+//   line-height: 35px;
+//   border: 1px solid #ced4da;
+//   border-radius: 0.25rem;
+// }
