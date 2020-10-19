@@ -1,5 +1,8 @@
 ja:
   activerecord:
+    errors:
+      messages:
+        number: "同じ店舗IDは使用できません"
     attributes:
       rank:
         name: 職位名
