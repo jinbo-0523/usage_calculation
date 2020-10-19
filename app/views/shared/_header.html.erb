@@ -1,7 +1,7 @@
-<div>食材使用量計算アプリ</div>
+<div class="title">食材使用量計算アプリ</div>
 <nav class="header__top navbar navbar-expand navbar-light">
   <% if company_signed_in?%>
-    <div>会社名： <%= current_company.name %> </div>
+    <div class=company__name >会社名： <%= current_company.name %> </div>
   <% end %>
   <div id="Navber">
     <ul class="navbar-nav">
@@ -12,7 +12,7 @@
         <li class="nav-item active">
           <%= link_to 'ログアウト', destroy_company_session_path, method: :delete, class: 'nav-link' %>
         </li>
-    <% else %>
+      <% else %>
         <li class="nav-item active">
           <%= link_to "新規登録", new_company_registration_path, class: 'nav-link' %>
         </li>
@@ -24,7 +24,8 @@
   </div>
 </nav>
 
-<nav class="header__bottom navbar">
+<% if company_signed_in?%>
+  <nav class="header__bottom navbar">
   <div class="header__menu">
     <ul class="header__menu__ul text-nowrap">
       <%= link_to companies_path, class: "header__menu__ul__home" do %>
@@ -56,4 +57,5 @@
       <% end %>
     </ul>
   </div>
-</nav>
+  </nav>
+<% end %>

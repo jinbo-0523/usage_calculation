@@ -185,8 +185,16 @@ max-width: 576px;
     }
   }
 }
+.title{
+    font-size: 20px;
+    font-weight: bolder;
+  }
 header {
   background-color: #ffffff;
+  
+  .header__top{
+    margin-left: auto;
+  }
   .navbar {
     padding: 0px;
   }
@@ -199,12 +207,6 @@ body {
   padding-right: 4px;
 }
 
-// .cocoon_deleate {
-//   // background-color: red;
-//   color: #495057;;
-//   display: block;
-//   text-align: center;
-//   line-height: 35px;
-//   border: 1px solid #ced4da;
-//   border-radius: 0.25rem;
-// }
+.nav-item{
+  text-align: right;
+}
