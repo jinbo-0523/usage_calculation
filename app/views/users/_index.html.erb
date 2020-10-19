@@ -8,7 +8,7 @@
 <div class="page">
   <%= paginate @search_user %>
 </div>
-<table class="table table-bordered table-striped mt-4">
+<table class="table table-bordered ">
   <thead class="table-primary">
     <tr>
       <th scope="col">No.</th>
@@ -33,7 +33,7 @@
           <i class="far fa-eye-slash"></i>表示しない
         <% end %>
         </td>
-        <td class="text-nowrap">
+        <td>
           <%= link_to  edit_user_path(user), class: "btn btn-success" do %>
             <i class="far fa-edit"></i><span class="d-none d-md-inline"> 編集</span>
           <% end %>
