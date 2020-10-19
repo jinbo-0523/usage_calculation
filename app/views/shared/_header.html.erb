@@ -37,14 +37,14 @@
       <%= link_to new_user_path , class: "header__menu__ul__user" do %>
         <i class="fas fa-user"></i>ユーザー<span class="d-none d-sm-inline">設定</span>
       <% end %>
-      <%= link_to new_brand_path, class: "header__menu__ul__brand" do %>
-        <i class="fas fa-coffee"></i>業態<span class="d-none d-sm-inline">設定</span>
+      <%= link_to new_shop_path, class: "header__menu__ul__shop" do %>
+        <i class="fas fa-store-alt"></i>店舗<span class="d-none d-sm-inline">設定</span>
       <% end %>
     </ul>
       
     <ul class="header__menu__ul text-nowrap">
-      <%= link_to new_shop_path, class: "header__menu__ul__shop" do %>
-        <i class="fas fa-store-alt"></i>店舗<span class="d-none d-sm-inline">設定</span>
+      <%= link_to new_report_path , class: "header__menu__ul__report" do %>
+        <i class="fas fa-comments-dollar"></i>出数<span class="d-none d-sm-inline">入力</span>
       <% end %>
       <%= link_to new_food_path , class: "header__menu__ul__food" do %>
         <i class="fas fa-fish"></i></i>食材<span class="d-none d-sm-inline">設定</span>
@@ -52,8 +52,8 @@
       <%= link_to new_recipe_path , class: "header__menu__ul__recipe" do %>
         <i class="fas fa-utensils"></i>レシピ<span class="d-none d-sm-inline">設定</span>
       <% end %>
-      <%= link_to new_report_path , class: "header__menu__ul__report" do %>
-        <i class="fas fa-comments-dollar"></i>出数<span class="d-none d-sm-inline">入力</span>
+      <%= link_to new_brand_path, class: "header__menu__ul__brand" do %>
+        <i class="fas fa-coffee"></i>業態<span class="d-none d-sm-inline">設定</span>
       <% end %>
     </ul>
   </div>
