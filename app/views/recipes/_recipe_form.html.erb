@@ -2,7 +2,7 @@
 <%=  form_with model: @recipe, local: true do |form|%>
   <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name, class: "form-control valid-field"%>
+    <%= form.text_field :name, class: "form-control valid-field" ,placeholder: "レシピ名を入力してください" %>
     <div class="invalid-feedback">入力して下さい</div>
   </div>
 
