@@ -2,7 +2,7 @@
   <div class="form-row">
     <div class="field form-group col">
       <% f.label :food_id %>
-      <%= f.select(:food_id, @foods.pluck(:name, :id), {prompt: ""}, class: "flexselect form-control valid-field" ) %>
+      <%= f.select(:food_id, @foods.pluck(:name, :id), {prompt: ""}, class: "flexselect form-control valid-field"  ,placeholder: "を入力してください" ) %>
       <div class="invalid-feedback">選択して下さい</div>
     </div>
     <div class="field form-group col">
