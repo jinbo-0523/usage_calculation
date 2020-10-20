@@ -10,8 +10,8 @@
       <%= f.text_field :amount, placeholder: "分量を入力", class: "form-control valid-field" %>
       <div class="invalid-feedback">入力して下さい</div>
     </div>
-    <%= link_to_remove_association '<i class="far fa-edit"></i> 食材削除'.html_safe, f , {class:"cocoon_deleate form-group col btn btn-danger"}%>
-    <%# <i class="fas fa-trash-alt"></i>  <span class="d-none d-md-inline"> 削除</span> %>
-    <%# '<i class="far fa-edit"></i> 食材削除'.html_safe %>
+    <div class="cocoon__deleate col">
+      <%= link_to_remove_association '<i class="fas fa-trash-alt"></i> 食材削除'.html_safe, f , {class:"cocoon__deleate__link form-group col btn btn-danger"}%>
+    </div>
   </div>
 </div>
