@@ -1,14 +1,18 @@
 .cocoon__deleate{
   margin: 0px;
   border-color: #ffffff;
-  .btn-danger {
-    border-color: #ffffff;
+  a {
     margin: 0px;
     color: #ffffff;
-    background:rgba(250,0,0,0.1);
   }
-  .btn-danger hover{
+  a:hover{
     background-color: lightpink;
     border-color: lightpink;
+  }
+  .cocoon__deleate__link{
+    background:rgba(250,0,0,0.1);
+  } 
+  .btn-danger {
+    border-color: #ffffff;
   }
 }
