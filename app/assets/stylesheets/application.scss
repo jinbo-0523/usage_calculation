@@ -185,18 +185,38 @@ max-width: 576px;
     }
   }
 }
-.title{
-    font-size: 20px;
-    font-weight: bolder;
+
+.fixed-top {
+.app {
+  font-weight: lighter
+
+}
+.app__title{
+    font-size: 16px;
+    font-weight: lighter
   }
+.app__name {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 30px;
+  }
+}
+
 header {
-  background-color: #ffffff;
+  background-color: rgba(220, 215, 215, 1);
   
   .header__top{
     margin-left: auto;
   }
   .navbar {
     padding: 0px;
+    .Navbar {
+      .navbar-nav {
+        a:hover {
+          border-radius: 5px;
+          background-color: darkgray;
+        }
+      }
+    }
   }
 }
 body {
