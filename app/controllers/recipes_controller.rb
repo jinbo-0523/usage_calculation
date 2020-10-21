@@ -11,8 +11,7 @@ class RecipesController < ApplicationController
     # indexで@recipesが必要
     @brands = current_company.brands.where(display: true).order(id: :asc)
     @q = current_company.recipes.ransack(params[:q])
-    @search_recipe = @q.result.order(id: :asc).page(params[:page]).per(20)
-    
+    @search_recipe = @q.result.includes([:brand]).order(id: :asc).page(params[:page]).per(20)
     @foods = current_company.foods.where(display: true).order(id: :asc)
     @recipe = current_company.recipes.new
     @recipe.food_recipes.build
@@ -32,7 +31,7 @@ class RecipesController < ApplicationController
       flash.now[:alert] = "作成に失敗しました"
       @brands = current_company.brands.where(display: true).order(id: :asc)
       @q = current_company.recipes.ransack(params[:q])
-      @search_recipe = @q.result.order(id: :asc).page(params[:page]).per(20)  
+      @search_recipe = @q.result.includes([:brand]).order(id: :asc).page(params[:page]).per(20)  
       @foods = current_company.foods.where(display: true).order(id: :asc)
       render :new
     end
@@ -46,7 +45,7 @@ class RecipesController < ApplicationController
     @brands = current_company.brands.where(display: true).order(id: :asc)
     @foods = current_company.foods.order(id: :asc)
     @q = current_company.recipes.ransack(params[:q])
-    @search_recipe = @q.result.order(id: :asc).page(params[:page]).per(20)
+    @search_recipe = @q.result.includes([:brand]).order(id: :asc).page(params[:page]).per(20)
   end
   
   def update
@@ -55,6 +54,9 @@ class RecipesController < ApplicationController
     else
       flash.now[:alert] = "編集に失敗しました"
       @brands = current_company.brands.where(display: true).order(id: :asc)
+      @foods = current_company.foods.order(id: :asc)
+      @q = current_company.recipes.ransack(params[:q])
+      @search_recipe = @q.result.includes([:brand]).order(id: :asc).page(params[:page]).per(20)
       render :edit
     end
   end

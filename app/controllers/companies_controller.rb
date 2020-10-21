@@ -6,7 +6,9 @@ class CompaniesController < ApplicationController
       @brands = current_company.brands.where(display: true).order(id: :asc)
       @shops = current_company.shops.where(display: true).order(id: :asc)
       @q = current_company.shops.ransack(params[:q])
-      @search_shop = @q.result.where(display: true).order(id: :asc).page(params[:page]).per(20)
+      @search_shop = @q.result.includes([:brand]).where(display: true).order(id: :asc).page(params[:page]).per(20)
+      #↑↑↑bulletのアラートがここを指摘。includesはransackの公式でここが多いのでここに。
+      
     else
       redirect_to  new_company_session_path
     end

@@ -21,7 +21,7 @@ class Report < ApplicationRecord
   def self.list_of_food_recipes
     all.map do |report|
       recipe_list = []
-      report.orders.each do |order|
+      report.orders.includes([:food_recipes]).each do |order|
         order.food_recipes.each do |food_recipe|
           recipe_list << [food_recipe.food_id, food_recipe.amount * order.count]
         end
@@ -37,4 +37,3 @@ class Report < ApplicationRecord
     end
   end
 end
-    
