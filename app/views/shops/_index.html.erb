@@ -41,7 +41,7 @@
             <%= link_to  edit_shop_path(shop), class: "btn btn-success" do %>
               <i class="far fa-edit"></i><span class="d-none d-md-inline"> 編集</span>
             <% end %>
-            <%= link_to shop_path(shop),method: :delete , data: { confirm: "削除しますか?" }, class: "btn btn-danger" do %>
+            <%= link_to shop_path(shop),method: :delete , data: { confirm: "過去の出数データも削除されます。よろしいですか？" }, class: "btn btn-danger" do %>
               <i class="fas fa-trash-alt"></i><span class="d-none d-md-inline"> 削除</span>
             <% end %>
           </td>

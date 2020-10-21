@@ -34,7 +34,7 @@
             <%= link_to  edit_brand_path(brand), class: "btn btn-success" do %>
               <i class="far fa-edit"></i><span class="d-none d-md-inline"> 編集</span>
             <% end %>
-            <%= link_to brand_path(brand),method: :delete , data: { confirm: "削除しますか?" }, class: "btn btn-danger" do %>
+            <%= link_to brand_path(brand),method: :delete , data: { confirm: "このブランドのレシピも削除されますよろしですか？" }, class: "btn btn-danger" do %>
               <i class="fas fa-trash-alt"></i><span class="d-none d-md-inline"> 削除</span>
             <% end %>
           </td>
