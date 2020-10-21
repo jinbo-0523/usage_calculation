@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @user = current_company.users.new
     @ranks = current_company.ranks.order(id: :asc)
     @q = current_company.users.ransack(params[:q])
-    @search_user = @q.result.order(id: :asc).page(params[:page]).per(20)
+    @search_user = @q.result.includes([:rank]).order(id: :asc).page(params[:page]).per(20)
   end
   
   def create
@@ -21,6 +21,8 @@ class UsersController < ApplicationController
     else
       flash.now[:alert] = "作成に失敗しました"
       @ranks = current_company.ranks.order(id: :asc)
+      @q = current_company.users.ransack(params[:q])
+      @search_user = @q.result.includes([:rank]).order(id: :asc).page(params[:page]).per(20)
       render :new
     end
   end
@@ -32,7 +34,7 @@ class UsersController < ApplicationController
   def edit
     @ranks = current_company.ranks.order(id: :asc)
     @q = current_company.users.ransack(params[:q])
-    @search_user = @q.result.order(id: :asc).page(params[:page]).per(20)
+    @search_user = @q.result.includes([:rank]).order(id: :asc).page(params[:page]).per(20)
   end
   
   def update
@@ -42,7 +44,7 @@ class UsersController < ApplicationController
       flash.now[:alert] = "編集に失敗しました"
       @ranks = current_company.ranks.order(id: :asc)
       @q = current_company.users.ransack(params[:q])
-      @search_user = @q.result.order(id: :asc).page(params[:page]).per(20)
+      @search_user = @q.result.includes([:rank]).order(id: :asc).page(params[:page]).per(20)
       render :edit
     end
   end

@@ -34,21 +34,38 @@
       <div class="invalid-feedback">入力して下さい</div>
     </div>
   </div>
-<% if params[:q].present? %>
-  <%# 子テーブルのorderに %>
-    <%= form.fields_for :orders, @orders do |f| %>
-      <div class="form-group">
-        <%= f.hidden_field :recipe_id, value: f.object.recipe_id %>
-        <%# [f.index]とすることでコントローラーの記述減。配列で取れているのでindexが使える %>
-        <%= f.label :count, "#{@brand_recipes[f.index].name}の注文数" %>
-        <%= f.number_field :count, class: "form-control", min: 0 %>
+  <% if action_name == 'new' %>
+    <% if params[:q].present? %>
+      <%# 子テーブルのorderに %>
+        <%= form.fields_for :orders, @orders do |f| %>
+          <div class="form-group">
+            <%= f.hidden_field :recipe_id, value: f.object.recipe_id %>
+            <%# [f.index]とすることでコントローラーの記述減。配列で取れているのでindexが使える %>
+            <%= f.label :count, "#{@brand_recipes[f.index].name}の注文数" %>
+            <%= f.number_field :count, class: "form-control", min: 0 %>
+          </div>
+        <% end %>
+        <% if params[:q].present? %>
+          <input type="hidden" name="q[id_eq]" value="<%= params[:q][:id_eq] %>">
+        <% end %>
+      <div>
+        <%= form.submit button_value, class: "btn btn-success btn-block" %>
       </div>
     <% end %>
-    <% if params[:q].present? %>
-      <input type="hidden" name="q[id_eq]" value="<%= params[:q][:id_eq] %>">
-    <% end %>
-  <div>
-    <%= form.submit button_value, class: "btn btn-success btn-block" %>
-  </div>
-<% end %>
+  <% else %>
+      <%= form.fields_for :orders, @orders do |f| %>
+        <div class="form-group">
+          <%= f.hidden_field :recipe_id, value: f.object.recipe_id %>
+          <%# [f.index]とすることでコントローラーの記述減。配列で取れているのでindexが使える %>
+          <%= f.label :count, "#{@brand_recipes[f.index].name}の注文数" %>
+          <%= f.number_field :count, class: "form-control", min: 0 %>
+        </div>
+      <% end %>
+      <% if params[:q].present? %>
+        <input type="hidden" name="q[id_eq]" value="<%= params[:q][:id_eq] %>">
+      <% end %>
+    <div>
+      <%= form.submit button_value, class: "btn btn-success btn-block" %>
+    </div>
+  <% end %>
 <% end %>

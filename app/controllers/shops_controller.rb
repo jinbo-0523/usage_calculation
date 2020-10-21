@@ -8,7 +8,7 @@ class ShopsController < ApplicationController
   def new
     @brands = current_company.brands.where(display: true).order(id: :asc)
     @q = current_company.shops.ransack(params[:q])
-    @search_shop = @q.result.order(id: :asc).page(params[:page]).per(30)
+    @search_shop = @q.result.includes([:brand]).order(id: :asc).page(params[:page]).per(30)
     @shop = current_company.shops.new
   end
   
@@ -23,7 +23,7 @@ class ShopsController < ApplicationController
       flash.now[:alert] = "作成に失敗しました"
       @brands = current_company.brands.where(display: true).order(id: :asc)
       @q = current_company.shops.ransack(params[:q])
-      @search_shop = @q.result.order(id: :asc).page(params[:page]).per(30)
+      @search_shop = @q.result.includes([:brand]).order(id: :asc).page(params[:page]).per(30)
       render :new
     end
   end
@@ -32,7 +32,7 @@ class ShopsController < ApplicationController
     # 詳細表示しようとしたshopのID
     @shop = current_company.shops.find(params[:id])
     # そこのreportとrecipeを以下で取ってきている
-    @reports = @shop.reports.order(date: :desc).page(params[:page]).per(7)
+    @reports = @shop.reports.includes([:user]).order(date: :desc).page(params[:page]).per(7)
     @recipes = @shop.brand.recipes.where(display: true).order(:id)
     @foods = Food.where(id: @shop.brand.display_food_ids).order(id: :asc)
     @food_list = @reports.list_of_food_recipes.map do |food_recipe|
@@ -51,7 +51,7 @@ class ShopsController < ApplicationController
   def edit
     @brands = current_company.brands.where(display: true).order(id: :asc)
     @q = current_company.shops.ransack(params[:q])
-    @search_shop = @q.result.order(id: :asc).page(params[:page]).per(30)
+    @search_shop = @q.result.includes([:brand]).order(id: :asc).page(params[:page]).per(30)
     
   end
   def update
@@ -61,7 +61,7 @@ class ShopsController < ApplicationController
       flash.now[:alert] = "編集に失敗しました"
       @brands = current_company.brands.where(display: true).order(id: :asc)
       @q = current_company.shops.ransack(params[:q])
-      @search_shop = @q.result.order(id: :asc).page(params[:page]).per(30)
+      @search_shop = @q.result.includes([:brand]).order(id: :asc).page(params[:page]).per(30)
       render :edit
     end
   end
