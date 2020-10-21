@@ -1,10 +1,15 @@
 class CompaniesController < ApplicationController
+  skip_before_action :authenticate_company!, only: :index
   
   def index
-    @brands = current_company.brands.where(display: true).order(id: :asc)
-    @shops = current_company.shops.where(display: true).order(id: :asc)
-    @q = current_company.shops.ransack(params[:q])
-    @search_shop = @q.result.where(display: true).order(id: :asc).page(params[:page]).per(20)
+    if company_signed_in?
+      @brands = current_company.brands.where(display: true).order(id: :asc)
+      @shops = current_company.shops.where(display: true).order(id: :asc)
+      @q = current_company.shops.ransack(params[:q])
+      @search_shop = @q.result.where(display: true).order(id: :asc).page(params[:page]).per(20)
+    else
+      redirect_to  new_company_session_path
+    end
   end
 
   def new
