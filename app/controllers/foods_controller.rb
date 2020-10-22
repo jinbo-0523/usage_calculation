@@ -42,11 +42,6 @@ class FoodsController < ApplicationController
     end
   end
   
-  def destroy
-    @food.destroy!
-    redirect_to new_food_path, alert: "削除しました"
-  end
-  
   private
   
   def set_food

@@ -61,11 +61,6 @@ class RecipesController < ApplicationController
     end
   end
   
-  def destroy
-    @recipe.destroy!
-    redirect_to new_recipe_path, alert: "削除しました"
-  end
-
   private
   
   def set_recipe
