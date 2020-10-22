@@ -1,6 +1,6 @@
 class Recipe < ApplicationRecord
   belongs_to :brand
-  has_many :orders
+  has_many :orders, dependent: :destroy
   has_many :reports, through: :orders
   
   has_many :food_recipes, dependent: :destroy
