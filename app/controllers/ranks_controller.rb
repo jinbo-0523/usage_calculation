@@ -44,11 +44,6 @@ class RanksController < ApplicationController
     end
   end
   
-  def destroy
-    @rank.destroy!
-    redirect_to new_rank_path, alert: "削除しました"
-  end
-  
   private
   
   def set_rank

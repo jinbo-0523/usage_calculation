@@ -2,11 +2,11 @@ Rails.application.routes.draw do
   root to: 'companies#index'
   devise_for :companies
   resources :companies
-  resources :ranks
-  resources :users
+  resources :ranks, except: :destroy
+  resources :users, except: :destroy
   resources :brands
   resources :shops
-  resources :foods
+  resources :foods, except: :destroy
   namespace :recipes do
     resources :search, only: :index, defaults: { format: :json }
   end
