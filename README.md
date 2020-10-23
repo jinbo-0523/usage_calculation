@@ -93,4 +93,4 @@ ___
 
   ### ER図
   ___
-  ![ER図](https://gyazo.com/db64ceb9416f35e3bf7b4c8a59793ca5)
+  ![ER図](https://i.gyazo.com/db64ceb9416f35e3bf7b4c8a59793ca5.png)
