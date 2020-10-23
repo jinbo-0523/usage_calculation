@@ -81,17 +81,18 @@ foodJ = companyC.foods.create!(id: 10, name: "牛乳",total:1000 ,unit:"pc" )
 foodK = companyC.foods.create!(id: 11, name: "生クリーム",total:1000 ,unit:"pc" )
 foodL = companyC.foods.create!(id: 12, name: "イチゴ",total: 30,unit:"粒" )
 
-# 会社に紐付けなくて平気？？？
 
 
 recipeA = brand1.recipes.create!(id: 1, name: "カルボ")
 recipeB = brand1.recipes.create!(id: 2, name: "ミート")
 recipeC = brand2.recipes.create!(id: 3, name: "ハンバーグプレート")
 recipeD = brand2.recipes.create!(id: 4, name: "御膳A")
+
 recipeE = brand3.recipes.create!(id: 5, name: "親子丼")
 recipeF = brand3.recipes.create!(id: 6, name: "御膳A")
 recipeG = brand4.recipes.create!(id: 7, name: "チキンカレー")
 recipeH = brand4.recipes.create!(id: 8, name: "野菜カレー")
+
 recipeI = brand5.recipes.create!(id: 9, name: "カルビ")
 recipeJ = brand5.recipes.create!(id: 10, name: "焼肉定食")
 recipeK = brand6.recipes.create!(id: 11, name: "ハンバーグプレート")
@@ -104,16 +105,17 @@ recipeM = brand7.recipes.create!(id: 14, name: "腰塚・黒毛和牛 上肩ロ�
 food_recipeA = recipeA.food_recipes.create!(id: 1,  food_id: 1, amount: 20 )
 food_recipeB = recipeA.food_recipes.create!(id: 2,  food_id: 2, amount: 20 )
 food_recipeC = recipeA.food_recipes.create!(id: 3,  food_id: 3, amount: 20 )
-food_recipeD = recipeB.food_recipes.create!(id: 4,  food_id: 3, amount: 10 )
-food_recipeE = recipeB.food_recipes.create!(id: 5,  food_id: 4, amount: 50 )
-food_recipeF = recipeB.food_recipes.create!(id: 6,  food_id: 5, amount: 10 )
-food_recipeG = recipeB.food_recipes.create!(id: 7,  food_id: 5, amount: 5 )
-food_recipeH = recipeC.food_recipes.create!(id: 8,  food_id: 6, amount: 30 )
-food_recipeI = recipeC.food_recipes.create!(id: 9,  food_id: 7, amount: 1 )
+food_recipeD = recipeB.food_recipes.create!(id: 4,  food_id: 1, amount: 10 )
+food_recipeE = recipeB.food_recipes.create!(id: 5,  food_id: 2, amount: 50 )
+food_recipeF = recipeB.food_recipes.create!(id: 6,  food_id: 3, amount: 10 )
+food_recipeG = recipeB.food_recipes.create!(id: 7,  food_id: 4, amount: 5 )
+food_recipeH = recipeC.food_recipes.create!(id: 8,  food_id: 5, amount: 30 )
+food_recipeI = recipeC.food_recipes.create!(id: 9,  food_id: 6, amount: 1 )
 food_recipeJ = recipeC.food_recipes.create!(id: 10, food_id: 7, amount: 2 )
-food_recipeK = recipeD.food_recipes.create!(id: 11, food_id: 8, amount: 2 )
-food_recipeL = recipeD.food_recipes.create!(id: 12, food_id: 9, amount: 20 )
+food_recipeK = recipeD.food_recipes.create!(id: 11, food_id: 7, amount: 2 )
+food_recipeL = recipeD.food_recipes.create!(id: 12, food_id: 8, amount: 20 )
 food_recipeM = recipeD.food_recipes.create!(id: 13, food_id: 9, amount: 10 )
+
 food_recipeN = recipeE.food_recipes.create!(id: 14, food_id: 10, amount: 100 )
 food_recipeO = recipeE.food_recipes.create!(id: 15, food_id: 11, amount: 30 )
 
