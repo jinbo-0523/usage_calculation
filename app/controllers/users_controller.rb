@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
   def new
     @user = current_company.users.new
-    @ranks = current_company.ranks.order(id: :asc)
+    @ranks = current_company.ranks.where(display: true).order(id: :asc)
     @q = current_company.users.ransack(params[:q])
     @search_user = @q.result.includes([:rank]).order(id: :asc).page(params[:page]).per(20)
   end
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
       redirect_to new_user_path, notice: "新しくユーザーを作成しました"
     else
       flash.now[:alert] = "作成に失敗しました"
-      @ranks = current_company.ranks.order(id: :asc)
+      @ranks = current_company.ranks.where(display: true).order(id: :asc)
       @q = current_company.users.ransack(params[:q])
       @search_user = @q.result.includes([:rank]).order(id: :asc).page(params[:page]).per(20)
       render :new
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @ranks = current_company.ranks.order(id: :asc)
+    @ranks = current_company.ranks.where(display: true).order(id: :asc)
     @q = current_company.users.ransack(params[:q])
     @search_user = @q.result.includes([:rank]).order(id: :asc).page(params[:page]).per(20)
   end
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
       redirect_to new_user_path, notice:"職位を編集しました"
     else
       flash.now[:alert] = "編集に失敗しました"
-      @ranks = current_company.ranks.order(id: :asc)
+      @ranks = current_company.ranks.where(display: true).order(id: :asc)
       @q = current_company.users.ransack(params[:q])
       @search_user = @q.result.includes([:rank]).order(id: :asc).page(params[:page]).per(20)
       render :edit
