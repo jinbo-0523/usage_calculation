@@ -53,7 +53,6 @@ class ReportsController < ApplicationController
     @brand_recipes = Recipe.where(brand_id: @search_brands.ids).where(display: true).order(id: :asc)
     # 送られてきた@reportの中のrecipe_idを先に取り出す
     order_recipe_ids = @report.orders.pluck(:recipe_id)
-    binding.pry 
     @orders = []
     @brand_recipes.each do |recipe|
       # .include?( )で配列の中に引数のものが入っていればtrueの処理
