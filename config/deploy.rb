@@ -3,6 +3,7 @@ lock "~> 3.14.1"
 
 set :application, "usage_calculation"
 set :repo_url, "git@github.com:jinbo-0523/usage_calculation.git"
+set :branch, ENV['BRANCH'] || "master"
 
 append :linked_files, "config/master.key"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", 'node_modules'
@@ -20,6 +21,7 @@ namespace :deploy do
     end
   end
 end
+
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
