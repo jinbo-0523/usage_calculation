@@ -14,7 +14,7 @@ class User < ApplicationRecord
     # userがすでにあった場合、バリデーションに引っかかる
     # if user.present? && user != self で除外して編集できるようにする
     if user.present? && user != self
-      errors.add(:base, I18n.t("activerecord.errors.messages.number"))
+      errors.add(:base, I18n.t("activerecord.errors.messages.employee_id"))
     end
   end
 end
