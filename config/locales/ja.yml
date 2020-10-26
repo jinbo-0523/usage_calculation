@@ -3,6 +3,7 @@ ja:
     errors:
       messages:
         number: "同じ店舗IDは使用できません"
+        employee_id: "同じ従業員IDは使用できません"
     attributes:
       rank:
         name: 職位名
