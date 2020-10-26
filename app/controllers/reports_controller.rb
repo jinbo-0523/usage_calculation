@@ -9,10 +9,13 @@ class ReportsController < ApplicationController
     @recipes = current_company.recipes.where(display: true).order(id: :asc)
     @q = current_company.brands.ransack(params[:q])
     @search_brands = @q.result
+    # @search_brandsと同じbrand_idを持ってる店舗とレシピを以下二つで取得する
     @brand_shops = Shop.where(brand_id: @search_brands.ids).where(display: true).order(id: :asc)
     @brand_recipes = Recipe.where(brand_id: @search_brands.ids).where(display: true).order(id: :asc)
     @report = Report.new
+    # レシピをそれぞれ取り出し、
     @brand_recipes.each do |recipe|
+      # recipeの数だけbuildしていく。上でdisplay: trueを使っているので非表示設定のものは弾かれる
       @report.orders.build(recipe_id: recipe.id)
     end
   end
@@ -50,14 +53,16 @@ class ReportsController < ApplicationController
     @brand_recipes = Recipe.where(brand_id: @search_brands.ids).where(display: true).order(id: :asc)
     # 送られてきた@reportの中のrecipe_idを先に取り出す
     order_recipe_ids = @report.orders.pluck(:recipe_id)
+    binding.pry 
     @orders = []
     @brand_recipes.each do |recipe|
+      # .include?( )で配列の中に引数のものが入っていればtrueの処理
       if order_recipe_ids.include?(recipe.id)
         @orders << @report.orders.find_by(recipe_id: recipe.id)
         # order_recipe_idsと同じidが含まれていたら、取り出し
       else
         @orders << @report.orders.build(recipe_id: recipe.id)
-        # なければbuildして新しく作る
+        # なければbuildして新しく作る(buildする)
       end
     end
   end
