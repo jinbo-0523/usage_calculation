@@ -11,4 +11,11 @@ class Company < ApplicationRecord
   devise  :database_authenticatable, :registerable,
           :recoverable, :rememberable, :validatable
   validates :name, presence: true, uniqueness: true
+  def self.guest
+    find_or_create_by!( email: 'test@test') do |company|
+      company.password = SecureRandom.urlsafe_base64
+      company.name = "ゲストユーザー"
+    end
+  end
+  
 end

@@ -37,8 +37,11 @@
   <% if action_name == 'new' %>
     <% if params[:q].present? %>
       <%# 子テーブルのorderに %>
+        <%# newの時は@orderswoを無視してくれてる %>
         <%= form.fields_for :orders, @orders do |f| %>
           <div class="form-group">
+          <%# f.objectはorder。その中のrecipe_idが取りたいのでfields_forで回してるfから取得 %>
+            
             <%= f.hidden_field :recipe_id, value: f.object.recipe_id %>
             <%# [f.index]とすることでコントローラーの記述減。配列で取れているのでindexが使える %>
             <%= f.label :count, "#{@brand_recipes[f.index].name}の注文数" %>

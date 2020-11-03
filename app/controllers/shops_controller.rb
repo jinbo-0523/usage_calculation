@@ -34,7 +34,8 @@ class ShopsController < ApplicationController
     # そこのreportとrecipeを以下で取ってきている
     @reports = @shop.reports.includes([:user]).order(date: :desc).page(params[:page]).per(7)
     @recipes = @shop.brand.recipes.where(display: true).order(:id)
-    @foods = Food.where(id: @shop.brand.display_food_ids).order(id: :asc)
+    food_ids = @shop.brand.display_food_recipes.pluck(:food_id)
+    @foods = Food.where(id: food_ids).order(id: :asc)
     @food_list = @reports.list_of_food_recipes.map do |food_recipe|
       amounts = @foods.map do |food|
         index = food_recipe[:recipe_ids].index(food.id)

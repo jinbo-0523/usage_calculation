@@ -28,4 +28,5 @@ class CompaniesController < ApplicationController
 
   def destroy
   end
+
 end
