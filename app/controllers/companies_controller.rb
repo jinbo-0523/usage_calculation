@@ -28,4 +28,14 @@ class CompaniesController < ApplicationController
 
   def destroy
   end
+
+  def new_guest
+    company = Company.find_or_create_by!( email: 'test@test') do |company|
+      company.password = SecureRandom.urlsafe_base64
+      company.name = "株式会社テスト"
+      company.email = 'test@test'
+    end
+    sign_in company
+    redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
+  end
 end

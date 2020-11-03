@@ -1,5 +1,6 @@
 <div class="app"> 食材使用量計算<span class="app__title d-none d-sm-inline">アプリ</span><span class="app__name"> Genka!</span> </div>
 <nav class="header__top navbar navbar-expand navbar-light">
+
   <% if company_signed_in?%>
     <div class=company__name >会社名： <%= current_company.name %> </div>
   <% end %>
