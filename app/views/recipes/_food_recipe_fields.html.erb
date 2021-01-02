@@ -7,7 +7,7 @@
     </div>
     <div class="field form-group col">
       <% f.label :amount %>
-      <%= f.text_field :amount, placeholder: "分量を入力", class: "form-control valid-field" %>
+      <%= f.number_field :amount,step: '0.01', placeholder: "分量を入力", class: "form-control valid-field" %>
       <div class="invalid-feedback">入力して下さい</div>
     </div>
     <div class="cocoon__deleate col">
