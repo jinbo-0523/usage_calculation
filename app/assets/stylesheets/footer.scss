@@ -1,0 +1,66 @@
+.footer__box{
+  background-color: red;
+
+
+  &__function{
+    background-color: rgba(220, 215, 215, 1);
+    display: flex;
+    justify-content: space-around;
+    color: black;
+    a {
+      color: black;
+    }
+  }
+
+  address{
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    color: white;
+    ul{
+    list-style: none;
+    .name{
+      font-size: 20px;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      font-weight: bolder;
+    }
+    .tel{
+      font-size: 15px;
+    }
+    }
+
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
